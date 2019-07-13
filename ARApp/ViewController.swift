@@ -15,6 +15,10 @@ class ViewController: UIViewController {
     
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
     var locationManager = CLLocationManager()
+    // Area di testo per inserire il titolo dell'annotazione
+    @IBOutlet weak var titleTextField: UITextField!
+    // Area di testo per inserire la descrizione dell'annotazione
+    @IBOutlet weak var descriptionTextField: UITextField!
     
     // Valore di default per l'ampiezza della regione da visualizzare
     let regionRadius: Double = 1200
@@ -46,6 +50,18 @@ class ViewController: UIViewController {
         mapView.showsUserLocation = true    // Mostra la posizione dell'utente sulla mappa
         centerPosition(regionRadius: regionRadius)
     }
+    
+    // Crea una nuova annotazione posizionandola sulla posizione corrente dell'utente
+    @IBAction func addAnnotation(_ sender: UIButton) {
+        let newAnnotation = MKPointAnnotation()
+        newAnnotation.coordinate = mapView.userLocation.coordinate
+        newAnnotation.title = "Inserisci titolo"
+        newAnnotation.subtitle = "Inserisci descrizione"
+        mapView.addAnnotation(newAnnotation)
+        print("Nuova annotazione aggiunta alla mappa")
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
