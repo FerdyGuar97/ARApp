@@ -55,8 +55,10 @@ class ViewController: UIViewController {
     @IBAction func addAnnotation(_ sender: UIButton) {
         let newAnnotation = MKPointAnnotation()
         newAnnotation.coordinate = mapView.userLocation.coordinate
-        newAnnotation.title = "Inserisci titolo"
-        newAnnotation.subtitle = "Inserisci descrizione"
+        if titleTextField != nil { newAnnotation.title = titleTextField.text }
+        else { newAnnotation.title = "Inserisci titolo" }
+        if descriptionTextField != nil { newAnnotation.subtitle = descriptionTextField.text }
+        else { newAnnotation.subtitle = "Inserisci descrizione" }
         mapView.addAnnotation(newAnnotation)
         print("Nuova annotazione aggiunta alla mappa")
     }
