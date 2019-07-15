@@ -68,6 +68,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             else { newAnnotation.subtitle = "Inserisci descrizione" }
             
             self.mapView.addAnnotation(newAnnotation)
+            CoreDataController.shared.save(annotation: newAnnotation)
             print("Nuova annotazione aggiunta alla mappa")
         }))
         
@@ -108,7 +109,13 @@ class ViewController: UIViewController, MKMapViewDelegate {
         allowGPS()
         showCurrentPosition()
         mapView.delegate = self
+        loadPointAnnotation()
     }
 
+    func loadPointAnnotation() {
+        guard let points = CoreDataController.shared.getSavedAnnotations() else { return }
+        for i in points { mapView.addAnnotation(i) }
+    }
+    
 }
 

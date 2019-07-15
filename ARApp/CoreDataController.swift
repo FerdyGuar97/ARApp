@@ -21,7 +21,7 @@ class CoreDataController {
         self.context = application.persistentContainer.viewContext
     }
     
-    func save(annotation: MKAnnotation) {
+    func save(annotation: MKPointAnnotation) {
         let entity = NSEntityDescription.entity(forEntityName: "Annotation", in: self.context)
         let CoreDataAnn = Annotation(entity: entity!, insertInto: context)
         
