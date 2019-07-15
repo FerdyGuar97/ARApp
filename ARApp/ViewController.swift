@@ -31,6 +31,7 @@ class ViewController: UIViewController{
         let annotationNode = LocationAnnotationNode(location: location, image: image)
         
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        
     }
     
     override func viewDidLayoutSubviews() {
