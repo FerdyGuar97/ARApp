@@ -25,7 +25,7 @@
                                     <outletCollection property="gestureRecognizers" destination="R8m-Wa-m13" appends="YES" id="Lya-5A-nIj"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-ue-mwX">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-ue-mwX">
                                 <rect key="frame" x="372" y="99" width="22" height="22"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-zI-FJ9">
@@ -34,42 +34,22 @@
                                     <action selector="addAnnotation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fpc-H1-k9d"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MTl-TN-cNj">
-                                <rect key="frame" x="20" y="54" width="194" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCL-CX-XoF">
-                                <rect key="frame" x="20" y="94" width="318" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="MTl-TN-cNj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="5wb-OO-CSA"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6ib-aZ-dRQ"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="AUK-Yo-mJE"/>
-                            <constraint firstItem="rCL-CX-XoF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BZ0-jI-f2S"/>
                             <constraint firstItem="Pji-ue-mwX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="55" id="Iuf-Wy-o9i"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pji-ue-mwX" secondAttribute="trailing" constant="20" id="JUC-HS-PP7"/>
                             <constraint firstItem="jvi-zI-FJ9" firstAttribute="top" secondItem="Pji-ue-mwX" secondAttribute="bottom" constant="20" id="QGR-UB-B37"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MTl-TN-cNj" secondAttribute="trailing" constant="200" id="UZ7-YL-pF0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jvi-zI-FJ9" secondAttribute="trailing" constant="20" id="iTf-1f-hTd"/>
-                            <constraint firstItem="MTl-TN-cNj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="k5t-rV-CNE"/>
-                            <constraint firstItem="Pji-ue-mwX" firstAttribute="leading" secondItem="rCL-CX-XoF" secondAttribute="trailing" constant="30" id="lpc-kY-FeY"/>
-                            <constraint firstItem="rCL-CX-XoF" firstAttribute="top" secondItem="MTl-TN-cNj" secondAttribute="bottom" constant="10" id="oJQ-Fa-haE"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uYC-3H-i3G"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ygN-X6-ccs"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="descriptionTextField" destination="rCL-CX-XoF" id="83s-OY-8B0"/>
                         <outlet property="mapView" destination="qIs-9n-Bgg" id="l2v-Nv-j5M"/>
-                        <outlet property="titleTextField" destination="MTl-TN-cNj" id="PT8-QF-C7Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
