@@ -55,6 +55,24 @@ class ViewController: UIViewController {
     @IBAction func addAnnotation(_ sender: UIButton) {
         let newAnnotation = MKPointAnnotation()
         newAnnotation.coordinate = mapView.userLocation.coordinate
+        
+        let alert = UIAlertController(title: "Nuova annotazione", message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in textField.placeholder = "Titolo" })
+        
+        alert.addTextField(configurationHandler: { textField in textField.placeholder = "Descrizione" })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            
+            if let name = alert.textFields?.first?.text {
+                print("Your name: \(name)")
+            }
+        }))
+        
+        self.present(alert, animated: true)
+        
         if titleTextField != nil { newAnnotation.title = titleTextField.text }
         else { newAnnotation.title = "Inserisci titolo" }
         if descriptionTextField != nil { newAnnotation.subtitle = descriptionTextField.text }
@@ -69,45 +87,5 @@ class ViewController: UIViewController {
         showCurrentPosition()
     }
 
-    
-    
-    // Called when the annotation was added
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
-            return nil
-        }
-        
-        let reuseId = "pin"
-        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinView?.animatesDrop = true
-            pinView?.canShowCallout = true
-            pinView?.isDraggable = true
-            pinView?.pinTintColor = .purple
-            
-            let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
-            pinView?.rightCalloutAccessoryView = rightButton as? UIView
-        }
-        else {
-            pinView?.annotation = annotation
-        }
-        
-        return pinView
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print(#function)
-        if control == view.rightCalloutAccessoryView {
-            performSegue(withIdentifier: "toTheMoon", sender: self)
-        }
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
-        if newState == MKAnnotationView.DragState.ending {
-            let droppedAt = view.annotation?.coordinate
-            print(droppedAt.debugDescription)
-        }
-    }
 }
 
