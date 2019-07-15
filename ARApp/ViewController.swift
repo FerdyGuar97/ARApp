@@ -63,14 +63,51 @@ class ViewController: UIViewController {
         print("Nuova annotazione aggiunta alla mappa")
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         allowGPS()
         showCurrentPosition()
     }
 
-
+    
+    
+    // Called when the annotation was added
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView?.animatesDrop = true
+            pinView?.canShowCallout = true
+            pinView?.isDraggable = true
+            pinView?.pinTintColor = .purple
+            
+            let rightButton: AnyObject! = UIButton(type: UIButton.ButtonType.detailDisclosure)
+            pinView?.rightCalloutAccessoryView = rightButton as? UIView
+        }
+        else {
+            pinView?.annotation = annotation
+        }
+        
+        return pinView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print(#function)
+        if control == view.rightCalloutAccessoryView {
+            performSegue(withIdentifier: "toTheMoon", sender: self)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        if newState == MKAnnotationView.DragState.ending {
+            let droppedAt = view.annotation?.coordinate
+            print(droppedAt.debugDescription)
+        }
+    }
 }
 
