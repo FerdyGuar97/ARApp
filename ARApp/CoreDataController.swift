@@ -52,4 +52,26 @@ class CoreDataController {
         }
         return rtrn
     }
+    
+    func moveAnnotation(from startPoint: CLLocationCoordinate2D, to endPoint: CLLocationCoordinate2D) {
+        let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
+        fetchReq.returnsObjectsAsFaults = false
+        
+        // lf sta per long float, un normale float non permetteva di recuperare correttamente l'annotazione, da cambiare con gli ID
+        let predicate = NSPredicate(format: "latitude == %lf AND longitude == %lf", startPoint.latitude, startPoint.longitude)
+        print(predicate.predicateFormat)
+        fetchReq.predicate = predicate;
+        
+        do {
+            // Le prime due righe sono identiche a save(annotation:)
+            let ann = try context.fetch(fetchReq)
+            guard ann.count > 0 else {print("Nessuna annotazione corrispondente");return}
+            let annotationToMove = ann[0]
+            annotationToMove.latitude = endPoint.latitude
+            annotationToMove.longitude = endPoint.longitude
+            try annotationToMove.managedObjectContext!.save()
+        } catch let err {
+            print("Errore \(err)")
+        }
+    }
 }

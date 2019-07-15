@@ -19,6 +19,9 @@ class ViewController: UIViewController, MKMapViewDelegate {
     // Valore di default per l'ampiezza della regione da visualizzare
     let regionRadius: Double = 1200
     
+    // Annotazione attualmente selezionata
+    var selectedAnnotationPoint : CLLocationCoordinate2D!
+    
     // Richiesta all'utente di abilitare i permessi di geolocalizzazione
     func allowGPS() {
         if (CLLocationManager.locationServicesEnabled()) {
@@ -98,8 +101,12 @@ class ViewController: UIViewController, MKMapViewDelegate {
         switch newState {
         case .starting:
             view.dragState = .dragging
-        case .ending, .canceling:
+            // Salvo le coordinate del punto selezionato, le userò per recuperare l'annotazione in moveAnnotation (Usare ID)
+            selectedAnnotationPoint = view.annotation!.coordinate
+        case .canceling, .ending:
             view.dragState = .none
+            // Prendo il nuovo punto e sposto la vecchia annotazione
+            CoreDataController.shared.moveAnnotation(from: selectedAnnotationPoint, to: view.annotation!.coordinate)
         default: break
         }
     }
