@@ -15,8 +15,9 @@
 		A73DEB4222D6181300996DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73DEB4022D6181300996DC2 /* LaunchScreen.storyboard */; };
 		A73DEB4D22D6181300996DC2 /* ARAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB4C22D6181300996DC2 /* ARAppTests.swift */; };
 		A73DEB5822D6181300996DC2 /* ARAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB5722D6181300996DC2 /* ARAppUITests.swift */; };
-		E892B15D22DC7CF9001B8A89 /* Annotation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E892B15B22DC7CF9001B8A89 /* Annotation+CoreDataClass.swift */; };
-		E892B15E22DC7CF9001B8A89 /* Annotation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E892B15C22DC7CF9001B8A89 /* Annotation+CoreDataProperties.swift */; };
+		E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */; };
+		E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */; };
+		E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8B22DC8459000A6702 /* CoreDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +52,9 @@
 		A73DEB5322D6181300996DC2 /* ARAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB5722D6181300996DC2 /* ARAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAppUITests.swift; sourceTree = "<group>"; };
 		A73DEB5922D6181300996DC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E892B15B22DC7CF9001B8A89 /* Annotation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E892B15C22DC7CF9001B8A89 /* Annotation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E85DAE8B22DC8459000A6702 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +85,6 @@
 		A73DEB2822D6181200996DC2 = {
 			isa = PBXGroup;
 			children = (
-				E892B15B22DC7CF9001B8A89 /* Annotation+CoreDataClass.swift */,
-				E892B15C22DC7CF9001B8A89 /* Annotation+CoreDataProperties.swift */,
 				A73DEB3322D6181200996DC2 /* ARApp */,
 				A73DEB4B22D6181300996DC2 /* ARAppTests */,
 				A73DEB5622D6181300996DC2 /* ARAppUITests */,
@@ -105,7 +105,10 @@
 		A73DEB3322D6181200996DC2 /* ARApp */ = {
 			isa = PBXGroup;
 			children = (
+				E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */,
+				E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */,
 				A73DEB3422D6181200996DC2 /* AppDelegate.swift */,
+				E85DAE8B22DC8459000A6702 /* CoreDataController.swift */,
 				A73DEB3622D6181200996DC2 /* ViewController.swift */,
 				A73DEB3822D6181200996DC2 /* Main.storyboard */,
 				A73DEB3E22D6181300996DC2 /* Assets.xcassets */,
@@ -265,9 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E892B15D22DC7CF9001B8A89 /* Annotation+CoreDataClass.swift in Sources */,
-				E892B15E22DC7CF9001B8A89 /* Annotation+CoreDataProperties.swift in Sources */,
+				E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */,
+				E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */,
 				A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */,
+				E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */,
 				A73DEB3D22D6181200996DC2 /* ARApp.xcdatamodeld in Sources */,
 				A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */,
 			);

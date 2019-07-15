@@ -17,9 +17,9 @@ extension Annotation {
         return NSFetchRequest<Annotation>(entityName: "Annotation")
     }
 
-    @NSManaged public var title: String?
-    @NSManaged public var subtitle: String?
     @NSManaged public var latitude: Double
     @NSManaged public var longitude: Double
+    @NSManaged public var subtitle: String?
+    @NSManaged public var title: String?
 
 }
