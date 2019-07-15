@@ -15,10 +15,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
     var locationManager = CLLocationManager()
-    // Area di testo per inserire il titolo dell'annotazione
-    @IBOutlet weak var titleTextField: UITextField!
-    // Area di testo per inserire la descrizione dell'annotazione
-    @IBOutlet weak var descriptionTextField: UITextField!
     
     // Valore di default per l'ampiezza della regione da visualizzare
     let regionRadius: Double = 1200
@@ -71,23 +67,40 @@ class ViewController: UIViewController, MKMapViewDelegate {
             if alert.textFields![1].text != "" { newAnnotation.subtitle = alert.textFields![1].text }
             else { newAnnotation.subtitle = "Inserisci descrizione" }
             
+            self.mapView.addAnnotation(newAnnotation)
+            print("Nuova annotazione aggiunta alla mappa")
         }))
         
         self.present(alert, animated: true)
-        mapView.addAnnotation(newAnnotation)
-        print("Nuova annotazione aggiunta alla mappa")
+        
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil;
+        }
+        
         let reuseId = "reuse"
         if let anyAnn = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) {
             anyAnn.annotation = annotation;
             return anyAnn;
         }
         
-        let anyAnn = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        let anyAnn = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         anyAnn.canShowCallout = true;
+        anyAnn.pinTintColor  = .green
+        anyAnn.isDraggable = true;
         return anyAnn;
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        switch newState {
+        case .starting:
+            view.dragState = .dragging
+        case .ending, .canceling:
+            view.dragState = .none
+        default: break
+        }
     }
     
     override func viewDidLoad() {
