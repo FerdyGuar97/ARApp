@@ -9,69 +9,44 @@
 import UIKit
 import SceneKit
 import ARKit
+import CoreLocation
+import MapKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController{
     
     @IBOutlet weak var sceneView: ARSCNView!
     
+    var sceneLocationView = SceneLocationView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set the view's delegate
-        sceneView.delegate = self
+        sceneLocationView.run()
+        view.addSubview(sceneLocationView)
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        let coordinate = CLLocationCoordinate2D(latitude: 51.504571, longitude: -0.019717)
+        let location = CLLocation(coordinate: coordinate, altitude: 300)
+        let image = UIImage(named: "pin")!
         
-        // Create a new scene
+        let annotationNode = LocationAnnotationNode(location: location, image: image)
         
-        let constr = SCNBillboardConstraint()
+        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
-        constr.freeAxes = .Y
-        
-        let text = SCNText(string: "Aumentata", extrusionDepth: 1)
-        let node = SCNNode()
-        node.position = SCNVector3(x: 0, y: 0.4, z: 1)
-        node.scale = SCNVector3(x: 0.01, y: 0.01, z: 0.01)
-        node.geometry = text
-        node.geometry?.materials.first?.diffuse.contents = UIColor.white
-        node.constraints = [constr]
-        
-        let imgNode1 = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-        imgNode1.position = SCNVector3(x: 0, y: 0.4, z: -1)
-        imgNode1.physicsBody? = .static()
-        imgNode1.geometry?.materials.first?.diffuse.contents = UIImage(named: "IMG_0016.JPEG")
-        imgNode1.constraints = [constr]
-        
-        let imgNode2 = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-        imgNode2.position = SCNVector3(x: -1, y: 0.4, z: -1)
-        imgNode2.physicsBody? = .static()
-        imgNode2.geometry?.materials.first?.diffuse.contents = UIImage(named: "IMG_0016.JPEG")
-        imgNode2.constraints = [constr]
-        
-        sceneView.scene.rootNode.addChildNode(node)
-        sceneView.scene.rootNode.addChildNode(imgNode1)
-        sceneView.scene.rootNode.addChildNode(imgNode2)
-        sceneView.autoenablesDefaultLighting =  true
-        
+        sceneLocationView.frame = view.bounds
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-        
-        // Run the view's session
-        sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
-        sceneView.session.pause()
     }
     
     // MARK: - ARSCNViewDelegate
@@ -85,19 +60,5 @@ class ViewController: UIViewController, ARSCNViewDelegate {
      }
      */
     
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
-        
-    }
-    
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
-    }
-    
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
-    }
     
 }
