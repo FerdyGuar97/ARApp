@@ -78,6 +78,18 @@ class ViewController: UIViewController, MKMapViewDelegate {
         print("Nuova annotazione aggiunta alla mappa")
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseId = "reuse"
+        if let anyAnn = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) {
+            anyAnn.annotation = annotation;
+            return anyAnn;
+        }
+        
+        let anyAnn = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        anyAnn.canShowCallout = true;
+        return anyAnn;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         allowGPS()
