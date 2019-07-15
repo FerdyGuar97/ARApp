@@ -66,18 +66,14 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
             
-            if let name = alert.textFields?.first?.text {
-                print("Your name: \(name)")
-            }
+            if alert.textFields![0].text != "" { newAnnotation.title = alert.textFields![0].text }
+            else { newAnnotation.title = "Inserisci titolo" }
+            if alert.textFields![1].text != "" { newAnnotation.subtitle = alert.textFields![1].text }
+            else { newAnnotation.subtitle = "Inserisci descrizione" }
+            
         }))
         
-        
         self.present(alert, animated: true)
-        
-        if titleTextField != nil { newAnnotation.title = titleTextField.text }
-        else { newAnnotation.title = "Inserisci titolo" }
-        if descriptionTextField != nil { newAnnotation.subtitle = descriptionTextField.text }
-        else { newAnnotation.subtitle = "Inserisci descrizione" }
         mapView.addAnnotation(newAnnotation)
         print("Nuova annotazione aggiunta alla mappa")
     }
