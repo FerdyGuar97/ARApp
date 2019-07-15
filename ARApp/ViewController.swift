@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
@@ -71,6 +71,7 @@ class ViewController: UIViewController {
             }
         }))
         
+        
         self.present(alert, animated: true)
         
         if titleTextField != nil { newAnnotation.title = titleTextField.text }
@@ -85,6 +86,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         allowGPS()
         showCurrentPosition()
+        mapView.delegate = self
     }
 
 }
