@@ -31,7 +31,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-zI-FJ9">
                                 <rect key="frame" x="372" y="141" width="22" height="22"/>
                                 <connections>
-                                    <action selector="addAnnotation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fpc-H1-k9d"/>
+                                    <action selector="addBtnAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gl2-xW-ctw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -53,7 +53,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="R8m-Wa-m13"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="R8m-Wa-m13">
+                    <connections>
+                        <action selector="longPressureAction:" destination="BYZ-38-t0r" id="J2c-Te-mEE"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
