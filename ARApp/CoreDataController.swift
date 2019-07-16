@@ -32,6 +32,44 @@ class CoreDataController {
         CoreDataAnn.longitude = annotation.coordinate.longitude
     }
     
+    func getAnnotation(byUUID uuid: UUID) -> Annotation? {
+        let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
+        fetchReq.returnsObjectsAsFaults = false
+        
+        // lf sta per long float, un normale float non permetteva di recuperare correttamente l'annotazione, da cambiare con gli ID
+        let predicate = NSPredicate(format: "uuid == %@", uuid as CVarArg)
+        fetchReq.predicate = predicate;
+        
+        do {
+            // Le prime due righe sono identiche a save(annotation:)
+            let ann = try context.fetch(fetchReq)
+            guard ann.count > 0 else {print("Nessuna annotazione corrispondente");return nil}
+            return ann[0]
+        } catch let err {
+            print("Errore \(err)")
+        }
+        return nil;
+    }
+    
+    func getLocation(byUUID uuid: UUID) -> CLLocation? {
+        if let annotation = getAnnotation(byUUID: uuid) {
+            return CLLocation(latitude: annotation.latitude, longitude: annotation.longitude)
+        }
+        return nil;
+    }
+    
+    func moveAnnotation(withUUID uuid: UUID, to point: CLLocationCoordinate2D) {
+        if let annotationToMove = getAnnotation(byUUID: uuid) {
+            do {
+                annotationToMove.latitude = point.latitude
+                annotationToMove.longitude = point.longitude
+                try annotationToMove.managedObjectContext!.save()
+            } catch let error {
+                print("\(error)")
+            }
+        }
+    }
+    
     func getSavedAnnotations() -> [ARAppStdPointAnnotation]? {
         let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
         var rtrn = [ARAppStdPointAnnotation]()
@@ -55,25 +93,4 @@ class CoreDataController {
         return rtrn
     }
     
-    func moveAnnotation(withUUID uuid: UUID, to point: CLLocationCoordinate2D) {
-        let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
-        fetchReq.returnsObjectsAsFaults = false
-        
-        // lf sta per long float, un normale float non permetteva di recuperare correttamente l'annotazione, da cambiare con gli ID
-        let predicate = NSPredicate(format: "uuid == %@", uuid as CVarArg)
-        fetchReq.predicate = predicate;
-        
-        do {
-            // Le prime due righe sono identiche a save(annotation:)
-            let ann = try context.fetch(fetchReq)
-            guard ann.count > 0 else {print("Nessuna annotazione corrispondente");return}
-            let annotationToMove = ann[0]
-            annotationToMove.latitude = point.latitude
-            annotationToMove.longitude = point.longitude
-            try annotationToMove.managedObjectContext!.save()
-        } catch let err {
-            print("Errore \(err)")
-        }
-        
-    }
 }
