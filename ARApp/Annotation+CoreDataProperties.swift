@@ -21,5 +21,5 @@ extension Annotation {
     @NSManaged public var longitude: Double
     @NSManaged public var subtitle: String?
     @NSManaged public var title: String?
-
+    @NSManaged public var uuid: UUID
 }

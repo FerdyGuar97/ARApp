@@ -21,25 +21,27 @@ class CoreDataController {
         self.context = application.persistentContainer.viewContext
     }
     
-    func save(annotation: MKPointAnnotation) {
+    func save(annotation: ARAppStdPointAnnotation) {
         let entity = NSEntityDescription.entity(forEntityName: "Annotation", in: self.context)
         let CoreDataAnn = Annotation(entity: entity!, insertInto: context)
         
+        CoreDataAnn.uuid = annotation.uuid
         CoreDataAnn.title = annotation.title!
         CoreDataAnn.subtitle = annotation.subtitle!
         CoreDataAnn.latitude = annotation.coordinate.latitude
         CoreDataAnn.longitude = annotation.coordinate.longitude
     }
     
-    func getSavedAnnotations() -> [MKPointAnnotation]? {
+    func getSavedAnnotations() -> [ARAppStdPointAnnotation]? {
         let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
-        var rtrn = [MKPointAnnotation]()
+        var rtrn = [ARAppStdPointAnnotation]()
         
         do {
             let array = try context.fetch(fetchReq)
             guard array.count > 0 else {print("Rip fra, 0 elementi..."); return nil;}
             for x in array {
-                let newMKAnn = MKPointAnnotation()
+                let newMKAnn = ARAppStdPointAnnotation()
+                newMKAnn.uuid = x.uuid
                 newMKAnn.title = x.title
                 newMKAnn.subtitle = x.subtitle
                 newMKAnn.coordinate.longitude = x.longitude
@@ -53,13 +55,12 @@ class CoreDataController {
         return rtrn
     }
     
-    func moveAnnotation(from startPoint: CLLocationCoordinate2D, to endPoint: CLLocationCoordinate2D) {
+    func moveAnnotation(withUUID uuid: UUID, to point: CLLocationCoordinate2D) {
         let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
         fetchReq.returnsObjectsAsFaults = false
         
         // lf sta per long float, un normale float non permetteva di recuperare correttamente l'annotazione, da cambiare con gli ID
-        let predicate = NSPredicate(format: "latitude == %lf AND longitude == %lf", startPoint.latitude, startPoint.longitude)
-        print(predicate.predicateFormat)
+        let predicate = NSPredicate(format: "uuid == %@", uuid as CVarArg)
         fetchReq.predicate = predicate;
         
         do {
@@ -67,11 +68,12 @@ class CoreDataController {
             let ann = try context.fetch(fetchReq)
             guard ann.count > 0 else {print("Nessuna annotazione corrispondente");return}
             let annotationToMove = ann[0]
-            annotationToMove.latitude = endPoint.latitude
-            annotationToMove.longitude = endPoint.longitude
+            annotationToMove.latitude = point.latitude
+            annotationToMove.longitude = point.longitude
             try annotationToMove.managedObjectContext!.save()
         } catch let err {
             print("Errore \(err)")
         }
+        
     }
 }

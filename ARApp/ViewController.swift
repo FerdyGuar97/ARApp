@@ -19,9 +19,6 @@ class ViewController: UIViewController, MKMapViewDelegate {
     // Valore di default per l'ampiezza della regione da visualizzare
     let regionRadius: Double = 1200
     
-    // Annotazione attualmente selezionata
-    var selectedAnnotationPoint : CLLocationCoordinate2D!
-    
     // Richiesta all'utente di abilitare i permessi di geolocalizzazione
     func allowGPS() {
         if (CLLocationManager.locationServicesEnabled()) {
@@ -52,7 +49,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
     
     // Crea una nuova annotazione posizionandola sulla posizione corrente dell'utente
     @IBAction func addAnnotation(_ sender: UIButton) {
-        let newAnnotation = MKPointAnnotation()
+        let newAnnotation = ARAppStdPointAnnotation()
         newAnnotation.coordinate = mapView.userLocation.coordinate
         
         let alert = UIAlertController(title: "Nuova annotazione", message: nil, preferredStyle: .alert)
@@ -101,12 +98,11 @@ class ViewController: UIViewController, MKMapViewDelegate {
         switch newState {
         case .starting:
             view.dragState = .dragging
-            // Salvo le coordinate del punto selezionato, le userò per recuperare l'annotazione in moveAnnotation (Usare ID)
-            selectedAnnotationPoint = view.annotation!.coordinate
         case .canceling, .ending:
             view.dragState = .none
+            let ARAnn = view.annotation as! ARAppStdPointAnnotation
             // Prendo il nuovo punto e sposto la vecchia annotazione
-            CoreDataController.shared.moveAnnotation(from: selectedAnnotationPoint, to: view.annotation!.coordinate)
+            CoreDataController.shared.moveAnnotation(withUUID: ARAnn.uuid, to: ARAnn.coordinate)
         default: break
         }
     }

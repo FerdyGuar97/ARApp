@@ -5,8 +5,9 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Annotation" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Annotation" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
