@@ -21,6 +21,8 @@
 		E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */; };
 		E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */; };
 		E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8B22DC8459000A6702 /* CoreDataController.swift */; };
+		E8887F7D22DF530A009F7787 /* Document+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8887F7B22DF530A009F7787 /* Document+CoreDataClass.swift */; };
+		E8887F7E22DF530A009F7787 /* Document+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8887F7C22DF530A009F7787 /* Document+CoreDataProperties.swift */; };
 		E8BE996F22DCC08F008DB880 /* ARAppStdPointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BE996E22DCC08F008DB880 /* ARAppStdPointAnnotation.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E85DAE8B22DC8459000A6702 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
+		E8887F7B22DF530A009F7787 /* Document+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E8887F7C22DF530A009F7787 /* Document+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Document+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E8BE996E22DCC08F008DB880 /* ARAppStdPointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAppStdPointAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -113,6 +117,8 @@
 		A73DEB3322D6181200996DC2 /* ARApp */ = {
 			isa = PBXGroup;
 			children = (
+				E8887F7B22DF530A009F7787 /* Document+CoreDataClass.swift */,
+				E8887F7C22DF530A009F7787 /* Document+CoreDataProperties.swift */,
 				A746C94522DF353200466381 /* ARSym.png */,
 				318100E922DF1127002BCBA2 /* ARViewController.swift */,
 				E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */,
@@ -287,8 +293,10 @@
 				318100EC22DF31C9002BCBA2 /* CLDelegate.swift in Sources */,
 				318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */,
 				A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */,
+				E8887F7E22DF530A009F7787 /* Document+CoreDataProperties.swift in Sources */,
 				E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */,
 				A73DEB3D22D6181200996DC2 /* ARApp.xcdatamodeld in Sources */,
+				E8887F7D22DF530A009F7787 /* Document+CoreDataClass.swift in Sources */,
 				A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

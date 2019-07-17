@@ -22,4 +22,5 @@ extension Annotation {
     @NSManaged public var subtitle: String?
     @NSManaged public var title: String?
     @NSManaged public var uuid: UUID
+    @NSManaged public var document: Document?
 }

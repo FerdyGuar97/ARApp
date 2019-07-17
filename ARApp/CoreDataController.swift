@@ -123,4 +123,32 @@ class CoreDataController {
             value.distance(from: basePoint) <= distance
         }
     }
+    
+    func saveDocument(withUUID uuid: UUID, withImage img: UIImage, withDescription desc: String) {
+        if let annotation = getAnnotation(byUUID: uuid) {
+            let entity = NSEntityDescription.entity(forEntityName: "Document", in: self.context)
+            let document = Document(entity: entity!, insertInto: context)
+            
+            deleteDocument(byUUID: annotation.uuid)
+            
+            annotation.document = document
+            
+            document.annotation = annotation
+            document.image = img.pngData()! as NSData
+            document.descrizione = desc
+        }
+    }
+    
+    func deleteDocument(byUUID uuid: UUID) {
+        if let annotation = getAnnotation(byUUID: uuid), let docToDelete = annotation.document {
+            annotation.document = nil
+            self.context.delete(docToDelete)
+            
+            do {
+                try self.context.save()
+            } catch let error {
+                print("\(error)")
+            }
+        }
+    }
 }
