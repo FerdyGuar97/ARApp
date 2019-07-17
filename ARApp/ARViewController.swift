@@ -18,11 +18,11 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.title = nil
+        
         // Do any additional setup after loading the view.
         sceneView.delegate = self
-        
-        sceneView.showsStatistics = true
         
         let billboardConstraint = SCNBillboardConstraint()
         
@@ -32,23 +32,19 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
  
         let points = CoreDataController.shared.getLocations()
         
-        
-        for (_, value) in points{
+        for (_ , value) in points{
             let imgNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-            if let usrLoc = manager?.location {
-                print("Location OK")
-                let translation = SCNMatrix4MakeTranslation(0, 0, Float(value.distance(from: usrLoc)))
-                let teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: value)
-                let rotation = SCNMatrix4MakeRotation(teta, 0, 1, 0)
-                
-                let transform = SCNMatrix4Mult(translation, SCNMatrix4Mult(rotation, root.transform))
-                
-                imgNode.transform = transform
-                imgNode.constraints = [billboardConstraint]
-                imgNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage.png")
-                
-                sceneView.scene.rootNode.addChildNode(imgNode)
-            }
+            let translation = SCNMatrix4MakeTranslation(0, 0, Float(value.distance(from: manager!.location!)))
+            let teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: value)
+            let rotation = SCNMatrix4MakeRotation(teta, 0, 1, 0)
+            
+            let transform = SCNMatrix4Mult(translation, SCNMatrix4Mult(rotation, root.transform))
+            
+            imgNode.transform = transform
+            imgNode.constraints = [billboardConstraint]
+            imgNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage.png")
+            
+            sceneView.scene.rootNode.addChildNode(imgNode)
         }
         
     }
