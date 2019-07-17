@@ -25,14 +25,6 @@
                                     <outletCollection property="gestureRecognizers" destination="R8m-Wa-m13" appends="YES" id="Lya-5A-nIj"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Aa-rP-ArG">
-                                <rect key="frame" x="278" y="746" width="98" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ARSymC"/>
-                                <connections>
-                                    <segue destination="YfH-sR-ATl" kind="show" identifier="toARview" id="mtA-og-INE"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Do2-iT-qKN">
                                 <rect key="frame" x="359" y="108" width="35" height="134.5"/>
                                 <subviews>
@@ -66,6 +58,15 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Aa-rP-ArG">
+                                <rect key="frame" x="172" y="800" width="70" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <state key="normal" image="ARSymC"/>
+                                <connections>
+                                    <segue destination="YfH-sR-ATl" kind="show" identifier="toARview" id="mtA-og-INE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
