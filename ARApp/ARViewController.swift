@@ -38,7 +38,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             
             imgNode.transform = setTransform(location: value)
             imgNode.constraints = [billboardConstraint]
-            imgNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage.png")
+            imgNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage")
             
             sceneView.scene.rootNode.addChildNode(imgNode)
         }
