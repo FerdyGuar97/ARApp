@@ -13,7 +13,6 @@ import Foundation
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var lbldebug: UILabel!
     
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
     var locationManager = CLLocationManager()
@@ -181,24 +180,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             mapView.addAnnotation(i)
         }
     }
-
-    func updateDistances() {
-        lbldebug.text = "";
-        guard let points = CoreDataController.shared.getPointAnnotations() else { return }
-        for i in points {
-            let iLoc = CLLocation(latitude: i.coordinate.latitude, longitude: i.coordinate.longitude)
-            let distance = locationManager.location?.distance(from: iLoc)
-            lbldebug.text = lbldebug.text!  + String(format: "\n"+i.title!+" distance: %lf", distance!)
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        updateDistances()
-    }
-    
-    @IBAction func threeTapAction(_ sender: UITapGestureRecognizer) {
-        lbldebug.isHidden = !lbldebug.isHidden
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -207,8 +188,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
-        lbldebug.numberOfLines = 10
-        lbldebug.isHidden = true;
         mapView.delegate = self
         locationManager.delegate = self
         allowGPS()
