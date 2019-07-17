@@ -33,20 +33,20 @@
                                     <segue destination="YfH-sR-ATl" kind="show" identifier="toARview" id="mtA-og-INE"/>
                                 </connections>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Do2-iT-qKN">
-                                <rect key="frame" x="334" y="114" width="18" height="68"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Do2-iT-qKN">
+                                <rect key="frame" x="359" y="108" width="35" height="134.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-ue-mwX">
-                                        <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Pji-ue-mwX" secondAttribute="height" multiplier="1:1" id="bac-iM-L55"/>
+                                            <constraint firstAttribute="width" secondItem="Pji-ue-mwX" secondAttribute="height" multiplier="1:1" id="wfB-oS-rvO"/>
                                         </constraints>
                                         <state key="normal" image="more"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-zI-FJ9">
-                                        <rect key="frame" x="0.0" y="25" width="18" height="18"/>
+                                        <rect key="frame" x="0.0" y="50" width="35" height="34.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="jvi-zI-FJ9" secondAttribute="height" multiplier="1:1" id="NCI-zI-1dV"/>
+                                            <constraint firstAttribute="width" secondItem="jvi-zI-FJ9" secondAttribute="height" multiplier="1:1" id="9eh-h5-8D7"/>
                                         </constraints>
                                         <state key="normal" image="plus"/>
                                         <connections>
@@ -54,9 +54,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyn-vK-g8J">
-                                        <rect key="frame" x="0.0" y="50" width="18" height="18"/>
+                                        <rect key="frame" x="0.0" y="99.5" width="35" height="35"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Hyn-vK-g8J" secondAttribute="height" multiplier="1:1" id="lgY-pA-Mbg"/>
+                                            <constraint firstAttribute="width" secondItem="Hyn-vK-g8J" secondAttribute="height" multiplier="1:1" id="bRV-O3-xrq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                         <state key="normal" image="navigation"/>
@@ -72,6 +72,7 @@
                             <constraint firstItem="Do2-iT-qKN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="4rM-K1-gbr"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5U4-Da-s6X"/>
                             <constraint firstAttribute="bottom" secondItem="qIs-9n-Bgg" secondAttribute="bottom" id="Wl1-lS-MUK"/>
+                            <constraint firstItem="Do2-iT-qKN" firstAttribute="height" secondItem="qIs-9n-Bgg" secondAttribute="height" multiplier="0.15" id="Yft-j7-Wej"/>
                             <constraint firstAttribute="trailing" secondItem="qIs-9n-Bgg" secondAttribute="trailing" id="ZNy-Bu-XcP"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gZ7-6F-ViQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Do2-iT-qKN" secondAttribute="trailing" constant="20" id="tFJ-7o-nZ0"/>
@@ -218,7 +219,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ARSymC" width="163" height="161"/>
+        <image name="ARSymC" width="60" height="60"/>
         <image name="more" width="60" height="60"/>
         <image name="navigation" width="60" height="60"/>
         <image name="plus" width="60" height="60"/>

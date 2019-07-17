@@ -77,15 +77,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     @IBAction func longPressureAction(_ sender: UILongPressGestureRecognizer) {
-        let posMapView = sender.location(in: mapView)
-        let coordinate = mapView.convert(posMapView, toCoordinateFrom: mapView)
-        addAnnotation(at: coordinate)
-    }
-    
-    // SCOLLEGATO, DA USARE NELLA PROSSIMA VIEW
-    @IBAction func addBtnAction(_ sender: UIButton) {
-        let coordinate = mapView.userLocation.coordinate
-        addAnnotation(at: coordinate)
+        if sender.state == UIGestureRecognizer.State.began { // Per non far avviare la segue due volte
+            performSegue(withIdentifier: "addSegue", sender: sender)
+        }
     }
     
     // Crea una nuova annotazione posizionandola sulle coordinate passate come parametro
