@@ -24,8 +24,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Do any additional setup after loading the view.
         sceneView.delegate = self
         
-        sceneView.showsStatistics = true
-        
         let billboardConstraint = SCNBillboardConstraint()
         
         billboardConstraint.freeAxes = .Y
