@@ -83,6 +83,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         addAnnotation(at: coordinate)
     }
     
+    // SCOLLEGATO, DA USARE NELLA PROSSIMA VIEW
     @IBAction func addBtnAction(_ sender: UIButton) {
         let coordinate = mapView.userLocation.coordinate
         addAnnotation(at: coordinate)
