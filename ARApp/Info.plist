@@ -2,10 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>ARSym.png</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>The app will use the camera</string>
+	<string>This app requires camera usage</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The app will use the location data</string>
+	<key>NSCameraUsageDescription</key>
+	<string>The app will use the camera</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>The app will use the location data</string>
 	<key>CFBundleDevelopmentRegion</key>
