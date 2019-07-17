@@ -47,7 +47,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="AR"/>
                                 <connections>
-                                    <segue destination="YfH-sR-ATl" kind="show" id="mtA-og-INE"/>
+                                    <segue destination="YfH-sR-ATl" kind="show" identifier="toARview" id="mtA-og-INE"/>
                                 </connections>
                             </button>
                         </subviews>
