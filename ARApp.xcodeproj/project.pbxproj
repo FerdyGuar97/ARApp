@@ -17,6 +17,7 @@
 		A73DEB4222D6181300996DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73DEB4022D6181300996DC2 /* LaunchScreen.storyboard */; };
 		A73DEB4D22D6181300996DC2 /* ARAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB4C22D6181300996DC2 /* ARAppTests.swift */; };
 		A73DEB5822D6181300996DC2 /* ARAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB5722D6181300996DC2 /* ARAppUITests.swift */; };
+		A746C94622DF353200466381 /* ARSym.png in Resources */ = {isa = PBXBuildFile; fileRef = A746C94522DF353200466381 /* ARSym.png */; };
 		E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */; };
 		E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */; };
 		E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8B22DC8459000A6702 /* CoreDataController.swift */; };
@@ -59,6 +60,7 @@
 		A73DEB5322D6181300996DC2 /* ARAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB5722D6181300996DC2 /* ARAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAppUITests.swift; sourceTree = "<group>"; };
 		A73DEB5922D6181300996DC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A746C94522DF353200466381 /* ARSym.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ARSym.png; sourceTree = "<group>"; };
 		E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E85DAE8B22DC8459000A6702 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				E8887F7B22DF530A009F7787 /* Document+CoreDataClass.swift */,
 				E8887F7C22DF530A009F7787 /* Document+CoreDataProperties.swift */,
+				A746C94522DF353200466381 /* ARSym.png */,
 				318100E922DF1127002BCBA2 /* ARViewController.swift */,
 				E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */,
 				E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */,
@@ -256,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A746C94622DF353200466381 /* ARSym.png in Resources */,
 				A73DEB4222D6181300996DC2 /* LaunchScreen.storyboard in Resources */,
 				A73DEB3F22D6181300996DC2 /* Assets.xcassets in Resources */,
 				A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */,
