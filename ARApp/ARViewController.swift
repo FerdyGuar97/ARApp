@@ -32,8 +32,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
  
         let points = CoreDataController.shared.getLocations()
         
-        var elem : CLLocation?
-        
         for (key, value) in points{
             var imgNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
             var translation = SCNMatrix4MakeTranslation(0, 0, Float(value.distance(from: manager!.location!)))
