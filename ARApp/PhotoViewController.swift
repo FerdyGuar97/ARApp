@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import CoreLocation
 
 class PhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    public var location:CLLocationCoordinate2D!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Do any additional setup after loading the view.
     }
@@ -35,7 +37,11 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
     
     @IBAction func commit(_ sender: UIButton) {
     }
-    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.originalImage] as! UIImage
+        imageView.image = image
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
