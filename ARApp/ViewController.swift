@@ -15,8 +15,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var lbldebug: UILabel!
     
-    var arView : ARViewController?
-    
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
     var locationManager = CLLocationManager()
     
@@ -190,8 +188,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         updateDistances()
-        
-        
     }
     
     @IBAction func threeTapAction(_ sender: UITapGestureRecognizer) {
@@ -220,7 +216,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         case "toARview":
             let dstView = segue.destination as! ARViewController
             dstView.manager = locationManager
-            arView = dstView
         default:
             print(#function)
         }
