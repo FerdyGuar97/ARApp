@@ -104,7 +104,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             else { newAnnotation.subtitle = "Inserisci descrizione" }
             
             self.mapView.addAnnotation(newAnnotation)
-            CoreDataController.shared.save(annotation: newAnnotation)
+            CoreDataController.shared.saveAnnotation(newAnnotation)
             print("Nuova annotazione aggiunta alla mappa")
         }))
         
@@ -150,7 +150,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     // Carica le annotazioni dal Core Data
     func loadPointAnnotation() {
-        guard let points = CoreDataController.shared.getSavedAnnotations() else { return }
+        guard let points = CoreDataController.shared.getPointAnnotations() else { return }
         for i in points {
             mapView.addAnnotation(i)
         }
@@ -158,7 +158,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     func updateDistances() {
         lbldebug.text = "";
-        guard let points = CoreDataController.shared.getSavedAnnotations() else { return }
+        guard let points = CoreDataController.shared.getPointAnnotations() else { return }
         for i in points {
             let iLoc = CLLocation(latitude: i.coordinate.latitude, longitude: i.coordinate.longitude)
             let distance = locationManager.location?.distance(from: iLoc)

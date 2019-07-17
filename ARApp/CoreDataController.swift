@@ -21,7 +21,7 @@ class CoreDataController {
         self.context = application.persistentContainer.viewContext
     }
     
-    func save(annotation: ARAppStdPointAnnotation) {
+    func saveAnnotation(_ annotation: ARAppStdPointAnnotation) {
         let entity = NSEntityDescription.entity(forEntityName: "Annotation", in: self.context)
         let CoreDataAnn = Annotation(entity: entity!, insertInto: context)
         
@@ -36,12 +36,11 @@ class CoreDataController {
         let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
         fetchReq.returnsObjectsAsFaults = false
         
-        // lf sta per long float, un normale float non permetteva di recuperare correttamente l'annotazione, da cambiare con gli ID
         let predicate = NSPredicate(format: "uuid == %@", uuid as CVarArg)
         fetchReq.predicate = predicate;
         
         do {
-            // Le prime due righe sono identiche a save(annotation:)
+            // Le prime due righe sono identiche a saveAnnotation(_:)
             let ann = try context.fetch(fetchReq)
             guard ann.count > 0 else {print("Nessuna annotazione corrispondente");return nil}
             return ann[0]
@@ -51,11 +50,17 @@ class CoreDataController {
         return nil;
     }
     
-    func getLocation(byUUID uuid: UUID) -> CLLocation? {
-        if let annotation = getAnnotation(byUUID: uuid) {
-            return CLLocation(latitude: annotation.latitude, longitude: annotation.longitude)
+    // Restituisce tutte le Annotation presenti nel Core Data
+    func getAnnotations() -> [Annotation] {
+        let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
+        
+        var array = [Annotation]();
+        do {
+            array = try context.fetch(fetchReq)
+        } catch let err {
+            print("Errore fetch \(err)")
         }
-        return nil;
+        return array;
     }
     
     func moveAnnotation(withUUID uuid: UUID, to point: CLLocationCoordinate2D) {
@@ -70,27 +75,40 @@ class CoreDataController {
         }
     }
     
-    func getSavedAnnotations() -> [ARAppStdPointAnnotation]? {
-        let fetchReq : NSFetchRequest<Annotation> = Annotation.fetchRequest()
-        var rtrn = [ARAppStdPointAnnotation]()
-        
-        do {
-            let array = try context.fetch(fetchReq)
-            guard array.count > 0 else {print("Rip fra, 0 elementi..."); return nil;}
-            for x in array {
-                let newMKAnn = ARAppStdPointAnnotation()
-                newMKAnn.uuid = x.uuid
-                newMKAnn.title = x.title
-                newMKAnn.subtitle = x.subtitle
-                newMKAnn.coordinate.longitude = x.longitude
-                newMKAnn.coordinate.latitude = x.latitude
-                
-                rtrn.append(newMKAnn)
-            }
-        } catch let err {
-            print("Errore fetch \(err)")
+    func getPointAnnotations() -> [ARAppStdPointAnnotation]? {
+        return getAnnotations().map {
+            (a) -> ARAppStdPointAnnotation in
+            let newMKAnn = ARAppStdPointAnnotation()
+            newMKAnn.uuid = a.uuid
+            newMKAnn.title = a.title
+            newMKAnn.subtitle = a.subtitle
+            newMKAnn.coordinate.longitude = a.longitude
+            newMKAnn.coordinate.latitude = a.latitude
+            return newMKAnn
         }
-        return rtrn
     }
     
+    // Restituisce la locazione di un punto in base all'UUID (Utile per calcolare distanze)
+    func getLocation(byUUID uuid: UUID) -> CLLocation? {
+        if let annotation = getAnnotation(byUUID: uuid) {
+            return CLLocation(latitude: annotation.latitude, longitude: annotation.longitude)
+        }
+        return nil;
+    }
+    
+    // Restituisce tutte le locazioni di tutte la Annotation
+    func getLocations() -> [UUID:CLLocation] {
+        let anns = getAnnotations()
+        var dict = [UUID:CLLocation]()
+        
+        for a in anns { dict[a.uuid] = CLLocation(latitude: a.latitude, longitude: a.longitude) }
+        return dict
+    }
+    
+    func getLocations(near basePoint: CLLocation, widthMaxDistance distance: Double) -> [UUID:CLLocation] {
+        return getLocations().filter {
+            (key,value) in
+            value.distance(from: basePoint) <= distance
+        }
+    }
 }
