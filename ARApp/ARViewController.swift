@@ -32,7 +32,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
  
         let points = CoreDataController.shared.getLocations()
         
-        for (key, value) in points{
+        for (_ , value) in points{
             let imgNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
             let translation = SCNMatrix4MakeTranslation(0, 0, Float(value.distance(from: manager!.location!)))
             let teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: value)
