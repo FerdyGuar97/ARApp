@@ -11,7 +11,7 @@ import CoreLocation
 
 class ChoiceViewController: UIViewController {
     
-    public var location: CLLocation!
+    public var location: CLLocationCoordinate2D!
 
     override func viewDidLoad() {
         super.viewDidLoad()
