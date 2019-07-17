@@ -221,6 +221,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         case "toARview":
             let dstView = segue.destination as! ARViewController
             dstView.manager = locationManager
+        case "addSegue":
+            if sender is UIButton {
+                let nextView = segue.destination as! ChoiceViewController
+                nextView.location = locationManager.location
+            } else if sender is UILongPressGestureRecognizer {
+                let press = sender as! UILongPressGestureRecognizer
+                let posMapView = press.location(in: mapView)
+                let coordinate = mapView.convert(posMapView, toCoordinateFrom: mapView)
+//                da completare
+            }
         default:
             print(#function)
         }

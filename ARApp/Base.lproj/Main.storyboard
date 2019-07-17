@@ -33,7 +33,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-zI-FJ9">
                                 <rect key="frame" x="372" y="185" width="22" height="22"/>
                                 <connections>
-                                    <segue destination="igc-aT-8OU" kind="show" id="nDE-mP-x1x"/>
+                                    <segue destination="igc-aT-8OU" kind="show" identifier="addSegue" id="nDE-mP-x1x"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Debug" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6m-fd-Pp2">
@@ -130,10 +130,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="876.5625"/>
         </scene>
-        <!--View Controller-->
+        <!--Text View Controller-->
         <scene sceneID="Jk0-fP-D3r">
             <objects>
-                <viewController id="NBp-9R-VaW" sceneMemberID="viewController">
+                <viewController id="NBp-9R-VaW" customClass="TextViewController" customModule="ARApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ywu-PP-hAu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -181,10 +181,10 @@
             </objects>
             <point key="canvasLocation" x="1973.913043478261" y="876.5625"/>
         </scene>
-        <!--View Controller-->
+        <!--Photo View Controller-->
         <scene sceneID="cd5-Hf-fLJ">
             <objects>
-                <viewController id="jFa-x4-bja" sceneMemberID="viewController">
+                <viewController id="jFa-x4-bja" customClass="PhotoViewController" customModule="ARApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="blP-kO-Y5h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -211,8 +211,16 @@
                                 <rect key="frame" x="0.0" y="818" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Library" id="BCD-Tz-4VH"/>
-                                    <barButtonItem title="Album" id="vrK-mL-1NL"/>
+                                    <barButtonItem title="Library" id="BCD-Tz-4VH">
+                                        <connections>
+                                            <action selector="library:" destination="jFa-x4-bja" id="02G-Jm-Ybl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Album" id="vrK-mL-1NL">
+                                        <connections>
+                                            <action selector="album:" destination="jFa-x4-bja" id="Auz-Rj-ggu"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jP2-XZ-8wF">
@@ -220,15 +228,21 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="commit:" destination="jFa-x4-bja" eventType="touchUpInside" id="086-Xd-0Pz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nqP-WW-QAc"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="rDc-11-XqG" id="2LA-dU-hu7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rc3-Dq-Heh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1973.913043478261" y="1585.7142857142856"/>
+            <point key="canvasLocation" x="1974" y="1602"/>
         </scene>
         <!--AR View Controller Scene-->
         <scene sceneID="Z7B-9b-RmI">

@@ -17,6 +17,9 @@
 		A73DEB4222D6181300996DC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73DEB4022D6181300996DC2 /* LaunchScreen.storyboard */; };
 		A73DEB4D22D6181300996DC2 /* ARAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB4C22D6181300996DC2 /* ARAppTests.swift */; };
 		A73DEB5822D6181300996DC2 /* ARAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB5722D6181300996DC2 /* ARAppUITests.swift */; };
+		A795311D22DF597B00E280EA /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795311C22DF597B00E280EA /* TextViewController.swift */; };
+		A795311F22DF5A1000E280EA /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795311E22DF5A1000E280EA /* PhotoViewController.swift */; };
+		A795312122DF601F00E280EA /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795312022DF601F00E280EA /* ChoiceViewController.swift */; };
 		E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */; };
 		E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */; };
 		E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85DAE8B22DC8459000A6702 /* CoreDataController.swift */; };
@@ -59,6 +62,9 @@
 		A73DEB5322D6181300996DC2 /* ARAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB5722D6181300996DC2 /* ARAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARAppUITests.swift; sourceTree = "<group>"; };
 		A73DEB5922D6181300996DC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A795311C22DF597B00E280EA /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		A795311E22DF5A1000E280EA /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		A795312022DF601F00E280EA /* ChoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Annotation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E85DAE8B22DC8459000A6702 /* CoreDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
@@ -130,6 +136,9 @@
 				A73DEB4322D6181300996DC2 /* Info.plist */,
 				A73DEB3B22D6181200996DC2 /* ARApp.xcdatamodeld */,
 				318100EB22DF31C9002BCBA2 /* CLDelegate.swift */,
+				A795311C22DF597B00E280EA /* TextViewController.swift */,
+				A795311E22DF5A1000E280EA /* PhotoViewController.swift */,
+				A795312022DF601F00E280EA /* ChoiceViewController.swift */,
 			);
 			path = ARApp;
 			sourceTree = "<group>";
@@ -294,6 +303,9 @@
 				A73DEB3D22D6181200996DC2 /* ARApp.xcdatamodeld in Sources */,
 				E8887F7D22DF530A009F7787 /* Document+CoreDataClass.swift in Sources */,
 				A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */,
+				A795311D22DF597B00E280EA /* TextViewController.swift in Sources */,
+				A795311F22DF5A1000E280EA /* PhotoViewController.swift in Sources */,
+				A795312122DF601F00E280EA /* ChoiceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
