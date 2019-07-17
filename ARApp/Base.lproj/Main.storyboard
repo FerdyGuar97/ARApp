@@ -95,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="137.94642857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Choice View Controller-->
         <scene sceneID="psP-b4-mla">
             <objects>
-                <viewController id="igc-aT-8OU" sceneMemberID="viewController">
+                <viewController id="igc-aT-8OU" customClass="ChoiceViewController" customModule="ARApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tV8-oq-6J8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

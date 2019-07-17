@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PhotoViewController: UIViewController, UIImagePickerControllerDelegate {
+class PhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
     
@@ -22,11 +22,15 @@ class PhotoViewController: UIViewController, UIImagePickerControllerDelegate {
     @IBAction func library(_ sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func album(_ sender: UIBarButtonItem) {
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
+        imagePicker.sourceType = .savedPhotosAlbum
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
     }
     
     @IBAction func commit(_ sender: UIButton) {
