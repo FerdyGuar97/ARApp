@@ -15,6 +15,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var sceneView: ARSCNView!
     
     var manager : CLLocationManager?
+    var root : SCNNode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,19 +29,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         billboardConstraint.freeAxes = .Y
         
-        let root : SCNNode = sceneView.scene.rootNode
+        root = sceneView.scene.rootNode
  
         let points = CoreDataController.shared.getLocations()
         
         for (_ , value) in points{
             let imgNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-            let translation = SCNMatrix4MakeTranslation(0, 0, Float(value.distance(from: manager!.location!)))
-            let teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: value)
-            let rotation = SCNMatrix4MakeRotation(teta, 0, 1, 0)
             
-            let transform = SCNMatrix4Mult(translation, SCNMatrix4Mult(rotation, root.transform))
-            
-            imgNode.transform = transform
+            imgNode.transform = setTransform(location: value)
             imgNode.constraints = [billboardConstraint]
             imgNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage.png")
             
@@ -100,4 +96,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         return azimuth
     }
 
+    
+    func setTransform(location : CLLocation) -> SCNMatrix4{
+        let translation = SCNMatrix4MakeTranslation(0, 0, Float(location.distance(from: manager!.location!)))
+        let teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: location)
+        let rotation = SCNMatrix4MakeRotation(teta, 0, 1, 0)
+        
+        return SCNMatrix4Mult(translation, SCNMatrix4Mult(rotation, root!.transform))
+    }
 }

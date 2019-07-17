@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318100E922DF1127002BCBA2 /* ARViewController.swift */; };
+		318100EC22DF31C9002BCBA2 /* CLDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318100EB22DF31C9002BCBA2 /* CLDelegate.swift */; };
 		A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3422D6181200996DC2 /* AppDelegate.swift */; };
 		A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3622D6181200996DC2 /* ViewController.swift */; };
 		A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73DEB3822D6181200996DC2 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		318100E922DF1127002BCBA2 /* ARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		318100EB22DF31C9002BCBA2 /* CLDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLDelegate.swift; sourceTree = "<group>"; };
 		A73DEB3122D6181200996DC2 /* ARApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB3422D6181200996DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A73DEB3622D6181200996DC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				A73DEB4022D6181300996DC2 /* LaunchScreen.storyboard */,
 				A73DEB4322D6181300996DC2 /* Info.plist */,
 				A73DEB3B22D6181200996DC2 /* ARApp.xcdatamodeld */,
+				318100EB22DF31C9002BCBA2 /* CLDelegate.swift */,
 			);
 			path = ARApp;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */,
 				E8BE996F22DCC08F008DB880 /* ARAppStdPointAnnotation.swift in Sources */,
 				E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */,
+				318100EC22DF31C9002BCBA2 /* CLDelegate.swift in Sources */,
 				318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */,
 				A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */,
 				E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */,
