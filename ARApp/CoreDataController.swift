@@ -141,7 +141,6 @@ class CoreDataController {
     
     func deleteDocument(byUUID uuid: UUID) {
         if let annotation = getAnnotation(byUUID: uuid), let docToDelete = annotation.document {
-            annotation.document = nil
             self.context.delete(docToDelete)
             
             do {
