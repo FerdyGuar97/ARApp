@@ -72,6 +72,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         centerPosition(regionRadius: regionRadius)
     }
     
+    @IBAction func myPositionButton(_ sender: UIButton) {
+        showCurrentPosition()
+    }
+    
+    
     @IBAction func longPressureAction(_ sender: UILongPressGestureRecognizer) {
         let posMapView = sender.location(in: mapView)
         let coordinate = mapView.convert(posMapView, toCoordinateFrom: mapView)
