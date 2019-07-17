@@ -112,6 +112,20 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
     }
     
+    // Elimina le annotazioni selezionate
+    @IBAction func deleteAnnotation(_ sender: UIButton) {
+        // Controllo se l'array delle annotazioni selezionate è vuoto
+        if mapView.selectedAnnotations.isEmpty { return }
+        else {
+            // Rimuove tutte le annotazioni selezionate (generalmente una)
+            for i in mapView.selectedAnnotations {
+                self.mapView.removeAnnotation(i)
+                // Aggiungere funzione che rimuove l'annotazione dal CoreData
+                print("Annotazione selezionata rimossa dalla mappa")
+            }
+        }
+     }
+    
     // Viene richiamata ogni volta che un'annotazione deve essera visualizzata sulla mappa, tale annotazione verrà visualizzata come una Annotation View
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         // Serve per escludere l'annotazione riguardante la posizione attuale dell'utente
