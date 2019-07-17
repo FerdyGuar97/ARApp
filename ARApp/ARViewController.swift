@@ -33,12 +33,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         let points = CoreDataController.shared.getLocations()
         
         for (key, value) in points{
-            var imgNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-            var translation = SCNMatrix4MakeTranslation(0, 0, Float(value.distance(from: manager!.location!)))
-            var teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: value)
-            var rotation = SCNMatrix4MakeRotation(teta, 0, 1, 0)
+            let imgNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+            let translation = SCNMatrix4MakeTranslation(0, 0, Float(value.distance(from: manager!.location!)))
+            let teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: value)
+            let rotation = SCNMatrix4MakeRotation(teta, 0, 1, 0)
             
-            var transform = SCNMatrix4Mult(translation, SCNMatrix4Mult(rotation, root.transform))
+            let transform = SCNMatrix4Mult(translation, SCNMatrix4Mult(rotation, root.transform))
             
             imgNode.transform = transform
             imgNode.constraints = [billboardConstraint]
