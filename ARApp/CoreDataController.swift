@@ -63,6 +63,18 @@ class CoreDataController {
         return array;
     }
     
+    func deleteAnnotation(byUUID uuid: UUID) {
+        if let annToDelete = getAnnotation(byUUID: uuid) {
+            self.context.delete(annToDelete)
+            
+            do {
+                try self.context.save()
+            } catch let error {
+                print("\(error)")
+            }
+        }
+    }
+    
     func moveAnnotation(withUUID uuid: UUID, to point: CLLocationCoordinate2D) {
         if let annotationToMove = getAnnotation(byUUID: uuid) {
             do {

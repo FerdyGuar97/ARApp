@@ -10,6 +10,8 @@
 	<string>This app requires camera usage</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The app will use the location data</string>
+	<key>NSCameraUsageDescription</key>
+	<string>The app will use the camera</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>The app will use the location data</string>
 	<key>CFBundleDevelopmentRegion</key>

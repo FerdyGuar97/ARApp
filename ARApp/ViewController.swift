@@ -119,8 +119,9 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         else {
             // Rimuove tutte le annotazioni selezionate (generalmente una)
             for i in mapView.selectedAnnotations {
-                self.mapView.removeAnnotation(i)
-                // Aggiungere funzione che rimuove l'annotazione dal CoreData
+                let ann = i as! ARAppStdPointAnnotation
+                self.mapView.removeAnnotation(ann)
+                CoreDataController.shared.deleteAnnotation(byUUID: ann.uuid)
                 print("Annotazione selezionata rimossa dalla mappa")
             }
         }
@@ -143,6 +144,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let anyAnn = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
         anyAnn.canShowCallout = true;
         anyAnn.pinTintColor  = .green
+        let btnCancel = UIButton(type: .custom)
+        btnCancel.frame = CGRect(x: 0, y: 0, width: 18, height: 22)
+        btnCancel.setImage(UIImage(named: "trash"), for: .normal)
+        btnCancel.addTarget(self, action: #selector(ViewController.deleteAnnotation(_:)), for: .touchUpInside)
+        anyAnn.rightCalloutAccessoryView = btnCancel
         // Questo parametro permette di fare lo spostamento dell'annotation view, la relativa annotazione verrà riscritta automaticamente
         anyAnn.isDraggable = true;
         return anyAnn;
