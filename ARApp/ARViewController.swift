@@ -19,6 +19,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = nil
+        
         // Do any additional setup after loading the view.
         sceneView.delegate = self
         
