@@ -184,4 +184,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         showCurrentPosition()
         loadPointAnnotation()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "toARview":
+            let dstView = segue.destination as! ARViewController
+            dstView.manager = locationManager
+        default:
+            print(#function)
+        }
+    }
 }

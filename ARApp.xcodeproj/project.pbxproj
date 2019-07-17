@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318100E922DF1127002BCBA2 /* ARViewController.swift */; };
 		A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3422D6181200996DC2 /* AppDelegate.swift */; };
 		A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3622D6181200996DC2 /* ViewController.swift */; };
 		A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73DEB3822D6181200996DC2 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		318100E922DF1127002BCBA2 /* ARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		A73DEB3122D6181200996DC2 /* ARApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB3422D6181200996DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A73DEB3622D6181200996DC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 		A73DEB3322D6181200996DC2 /* ARApp */ = {
 			isa = PBXGroup;
 			children = (
+				318100E922DF1127002BCBA2 /* ARViewController.swift */,
 				E85DAE8722DC8351000A6702 /* Annotation+CoreDataClass.swift */,
 				E85DAE8822DC8351000A6702 /* Annotation+CoreDataProperties.swift */,
 				A73DEB3422D6181200996DC2 /* AppDelegate.swift */,
@@ -274,6 +277,7 @@
 				E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */,
 				E8BE996F22DCC08F008DB880 /* ARAppStdPointAnnotation.swift in Sources */,
 				E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */,
+				318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */,
 				A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */,
 				E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */,
 				A73DEB3D22D6181200996DC2 /* ARApp.xcdatamodeld in Sources */,
