@@ -27,11 +27,16 @@
                                     <outletCollection property="gestureRecognizers" destination="lYi-mo-dNe" appends="YES" id="u90-Rv-1sL"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-ue-mwX">
-                                <rect key="frame" x="372" y="143" width="22" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-ue-mwX">
+                                <rect key="frame" x="366" y="143" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="Tbm-GL-JRD"/>
+                                    <constraint firstAttribute="height" constant="28" id="tNI-fL-MhW"/>
+                                </constraints>
+                                <state key="normal" image="more"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-zI-FJ9">
-                                <rect key="frame" x="372" y="185" width="22" height="22"/>
+                                <rect key="frame" x="372" y="191" width="22" height="22"/>
                                 <connections>
                                     <segue destination="igc-aT-8OU" kind="show" identifier="addSegue" id="nDE-mP-x1x"/>
                                 </connections>
@@ -52,7 +57,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyn-vK-g8J">
-                                <rect key="frame" x="366" y="227" width="28" height="28"/>
+                                <rect key="frame" x="366" y="233" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="DBN-bV-be3"/>
                                     <constraint firstAttribute="width" constant="28" id="ZTx-Ce-He7"/>
@@ -295,5 +300,6 @@
     <resources>
         <image name="ARSymC" width="163" height="161"/>
         <image name="arrow" width="180" height="180"/>
+        <image name="more" width="60" height="60"/>
     </resources>
 </document>
