@@ -40,7 +40,7 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
         uuid = UUID()
         
         CoreDataController.shared.saveDocument(withUUID: uuid, withImage: imageView.image, withDescription: )
-        
+        self.performSegue(withIdentifier: "addSegueUnwind", sender: sender)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
