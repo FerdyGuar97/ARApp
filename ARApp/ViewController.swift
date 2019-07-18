@@ -15,6 +15,11 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var btnAR: UIButton!
     
+    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var positionButton: UIButton!
+    
+    
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
     var locationManager = CLLocationManager()
     
@@ -180,6 +185,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        moreButton.layer.cornerRadius=5
+        plusButton.layer.cornerRadius=5
+        positionButton.layer.cornerRadius=5
+        
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
