@@ -211,4 +211,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             print(#function)
         }
     }
+    
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        print("torno indietro al ViewController Verde")
+    }
 }

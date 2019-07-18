@@ -165,9 +165,11 @@
                     </view>
                     <connections>
                         <outlet property="imageView" destination="rDc-11-XqG" id="2LA-dU-hu7"/>
+                        <segue destination="I3b-1h-hkZ" kind="unwind" identifier="addSegueUnwind" unwindAction="unwindToViewControllerWithSegue:" id="Neo-Mh-bNY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rc3-Dq-Heh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="I3b-1h-hkZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1048" y="891"/>
         </scene>
