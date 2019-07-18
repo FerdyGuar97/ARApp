@@ -198,7 +198,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         let backgroundColor = UIColor.white.cgColor
         let borderWidth : CGFloat = 0.5
         let cornerRadius : CGFloat = 5.0
-        let imagePadding = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        let padAm : CGFloat = 5.0
+        let imagePadding = UIEdgeInsets(top: padAm, left: padAm, bottom: padAm, right: padAm)
         
         moreButton.layer.borderColor = borderColor
         moreButton.layer.backgroundColor = backgroundColor
