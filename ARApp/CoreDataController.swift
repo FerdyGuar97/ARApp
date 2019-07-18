@@ -147,7 +147,7 @@ class CoreDataController {
             annotation.document = document
             
             document.annotation = annotation
-            document.image = (img ?? UIImage(named: "gandalfcage"))!.pngData()! as NSData
+            document.image = img?.pngData() as NSData?
             document.descrizione = desc
         }
     }

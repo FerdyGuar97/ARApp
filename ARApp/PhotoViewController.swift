@@ -21,6 +21,8 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.rightBarButtonItem=UIBarButtonItem(title: "Confirm", style: .plain, target: self, action: #selector(commit))
         // Riconosce la pressione su qualunque punto dello schermo per chiudere la tastiera
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
     }
@@ -39,14 +41,14 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
         present(imagePicker, animated: true, completion: nil)
     }
     
-    @IBAction func commit(_ sender: UIButton) {
+    @objc func commit() {
         uuid = UUID()
         
         CoreDataController.shared.saveAnnotation(withUUID: uuid!, withTitle: titleField.text!, withSubTitle: subtitleField.text!, withLocation: location)
         
         CoreDataController.shared.saveDocument(withUUID: uuid!, withImage: imageView.image, withDescription: descField.text!)
         
-        self.performSegue(withIdentifier: "addSegueUnwind", sender: sender)
+        self.performSegue(withIdentifier: "addSegueUnwind", sender: self)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
