@@ -18,8 +18,8 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
+        // Riconosce la pressione su qualunque punto dello schermo per chiudere la tastiera
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
     }
     
     @IBAction func library(_ sender: UIBarButtonItem) {
@@ -48,6 +48,8 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
         imageView.image = image
         dismiss(animated: true, completion: nil)
     }
+    
+    
     /*
     // MARK: - Navigation
 
