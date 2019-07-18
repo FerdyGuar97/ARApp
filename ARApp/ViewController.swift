@@ -183,22 +183,16 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        moreButton.layer.cornerRadius=5
-        plusButton.layer.cornerRadius=5
-        positionButton.layer.cornerRadius=5
-        
-        
+    func customButtons() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
-        let borderColor = UIColor.lightGray.cgColor
-        let backgroundColor = UIColor.white.cgColor
+        let borderColor = UIColor(red: 229.0/255, green: 229.0/255, blue: 234.0/255, alpha: 0.9).cgColor
+        let backgroundColor = UIColor(white: 1, alpha: 0.9).cgColor
         let borderWidth : CGFloat = 0.5
         let cornerRadius : CGFloat = 5.0
-        let padAm : CGFloat = 5.0
+        let padAm : CGFloat = 7.0
         let imagePadding = UIEdgeInsets(top: padAm, left: padAm, bottom: padAm, right: padAm)
         
         moreButton.layer.borderColor = borderColor
@@ -218,6 +212,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         positionButton.layer.borderWidth = borderWidth
         positionButton.layer.cornerRadius = cornerRadius
         positionButton.imageEdgeInsets = imagePadding
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        moreButton.layer.cornerRadius=5
+        plusButton.layer.cornerRadius=5
+        positionButton.layer.cornerRadius=5
+        
+        customButtons()
         
         mapView.delegate = self
         locationManager.delegate = self
