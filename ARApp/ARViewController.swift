@@ -18,7 +18,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     var worldCenter: CLLocation?
     
-    let worldRecenteringThreshold: Double = 7.0
+    static var mostAccurateLocation: CLLocation?
+    
+    let worldRecenteringThreshold: Double = 8.0
     
     var pins: [UUID: CLLocation] = [:]
     
@@ -32,7 +34,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        updateWorldCenter(locationManager!.location!)
+        updateWorldCenter(ARViewController.mostAccurateLocation ?? (locationManager?.location)!)
         placeNodes()
     }
     
@@ -47,7 +49,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.run(configuration, options: [.resetTracking])
         worldCenter = location
         
-        pins = CoreDataController.shared.getLocations(near: worldCenter!, widthMaxDistance: 100)
+        pins = CoreDataController.shared.getLocations(near: worldCenter!, widthMaxDistance: 75)
     }
     
     private func makeTransform(from origin: CLLocation, to node: CLLocation) -> SCNMatrix4{
@@ -70,7 +72,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             let node = SCNNode(geometry: SCNPlane(width: 1, height: 1))
             node.transform = makeTransform(from: center, to: pin)
             node.constraints = [billboardConstraint]
-            node.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage.png")
+            node.geometry?.firstMaterial?.diffuse.contents = CoreDataController.shared.getViewImage(byUUID: id)
             
             sceneView.scene.rootNode.addChildNode(node)
             

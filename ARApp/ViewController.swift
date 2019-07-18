@@ -16,7 +16,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var mapView: MKMapView!
 
     var arViewController : ARViewController?
-
     
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var moreButton: UIButton!
@@ -74,7 +73,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     // Visualizza sulla mappa la posizione dell'utente e centra la visuale
     func showCurrentPosition() {
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest   // Imposto il livello di accuratezza massima
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation   // Imposto il livello di accuratezza massima
         locationManager.distanceFilter = kCLDistanceFilterNone  // Tutti i movimenti devono essere riportati
         locationManager.startUpdatingLocation() // Tiene traccia del cambiamento di posizione
         mapView.showsScale = true   // Mostra la scala della mappa nell'angolo a sinistra
@@ -230,6 +229,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         super.viewDidLoad()
         customButtons()
         mapView.delegate = self
+        locationManager.activityType = .fitness
         locationManager.delegate = self
         allowGPS()
         showCurrentPosition()
@@ -270,10 +270,21 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
 //    Metodo del CLLocationManagerDelegate
 
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let newLocation = locations.last{
+            if(newLocation.timestamp.timeIntervalSinceNow < 5){
+                if(newLocation.horizontalAccuracy > 0 && newLocation.horizontalAccuracy < 8){
+                    ARViewController.mostAccurateLocation = newLocation
+                    print(newLocation.description)
+                }
+            }
+        }
 //
 //        guard let arView = arViewController else {return}
-//
+//        
+//        
+
 //        if let location = locations.last {
 //            if arView.worldCenter == nil || abs(arView.worldCenter!.distance(from: location)) > arView.worldRecenteringThreshold {
 //                arView.removeAllNodes()
@@ -281,5 +292,5 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 //                arView.placeNodes()
 //            }
 //        }
-//    }
+    }
 }
