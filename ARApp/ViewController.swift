@@ -25,7 +25,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var locationManager = CLLocationManager()
     
     // Valore di default per l'ampiezza della regione da visualizzare
-    let regionRadius: Double = 1200
+    let regionRadius: Double = 500
     
     // Richiede all'utente di abilitare i permessi di geolocalizzazione
     func allowGPS() {
