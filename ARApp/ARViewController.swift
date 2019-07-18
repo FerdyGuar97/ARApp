@@ -24,9 +24,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //locationManager.delegate = self
         self.title = nil
         sceneView.delegate = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,19 +51,10 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     }
     
     private func makeTransform(from origin: CLLocation, to node: CLLocation) -> SCNMatrix4{
-        // Calculate the displacement
         let distance = origin.distance(from: node)
         let translation = SCNMatrix4Translate(SCNMatrix4Identity, 0, 0, -Float(distance))
-        //let distanceTransform = simd_float4x4.translatingIdentity(x: 0, y: 0, z: -min(Float(distance), furthestAnchorDistance))
-        // Calculate the horizontal rotation
         let angle = ARViewController.bearingBetween(startLocation: origin, endLocation: node)
         let transform = SCNMatrix4Rotate(translation, -angle, 0, 1, 0)
-        //let rotation = Matrix.angle(from: location, to: landmark)
-        // Calculate the vertical tilt
-        //let tilt = Matrix.angleOffHorizon(from: location, to: landmark)
-        // Apply the transformations
-//        let tiltedTransformation = Matrix.rotateVertically(matrix: distanceTransform, around: tilt)
-//        let completedTransformation = Matrix.rotateHorizontally(matrix: tiltedTransformation, around: -rotation)
         return transform
     }
     
@@ -84,10 +75,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             sceneView.scene.rootNode.addChildNode(node)
             
             print("UUID: " +  id.description + "; Coordinate: " + pin.description)
-//            let anchorPoint = makeARAnchor(from: center, to: landmark.location)
-//            arSKView.session.add(anchor: anchorPoint)
-//            pins[anchorPoint.identifier] = landmark
-//            anchors.append(anchorPoint)
             
         }
     }
@@ -99,12 +86,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         })
         
         pins = [:]
-//        anchors.forEach({
-//            arSKView.node(for: $0)?.removeFromParent()
-//            arSKView.session.remove(anchor: $0)
-//        })
-//        anchors = []
-//        pins = [:]
     }
 
     
