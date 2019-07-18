@@ -14,65 +14,100 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet weak var sceneView: ARSCNView!
     
-    var manager : CLLocationManager?
-    var root : SCNNode?
+    var locationManager : CLLocationManager?
+    
+    var worldCenter: CLLocation?
+    
+    let worldRecenteringThreshold: Double = 7.0
+    
+    var pins: [UUID: CLLocation] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //locationManager.delegate = self
         self.title = nil
-        
-        // Do any additional setup after loading the view.
         sceneView.delegate = self
-        
-        let billboardConstraint = SCNBillboardConstraint()
-        
-        billboardConstraint.freeAxes = .Y
-        
-        root = sceneView.scene.rootNode
- 
-        let points = CoreDataController.shared.getLocations()
-        
-        for (_ , value) in points{
-            let imgNode = SCNNode(geometry: SCNPlane(width: 1, height: 1))
-            
-            imgNode.transform = setTransform(location: value)
-            imgNode.constraints = [billboardConstraint]
-            imgNode.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage.png")
-            
-            sceneView.scene.rootNode.addChildNode(imgNode)
-        }
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        updateWorldCenter(locationManager!.location!)
+        placeNodes()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+    
+    func updateWorldCenter(_ location: CLLocation) {
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravityAndHeading
         
-        sceneView.session.run(configuration)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        sceneView.session.run(configuration, options: [.resetTracking])
+        worldCenter = location
         
-        sceneView.session.pause()
+        pins = CoreDataController.shared.getLocations(near: worldCenter!, widthMaxDistance: 100)
     }
     
-    /*
-    // MARK: - Navigation
+    private func makeTransform(from origin: CLLocation, to node: CLLocation) -> SCNMatrix4{
+        // Calculate the displacement
+        let distance = origin.distance(from: node)
+        let translation = SCNMatrix4Translate(SCNMatrix4Identity, 0, 0, -Float(distance))
+        //let distanceTransform = simd_float4x4.translatingIdentity(x: 0, y: 0, z: -min(Float(distance), furthestAnchorDistance))
+        // Calculate the horizontal rotation
+        let angle = ARViewController.bearingBetween(startLocation: origin, endLocation: node)
+        let transform = SCNMatrix4Rotate(translation, -angle, 0, 1, 0)
+        //let rotation = Matrix.angle(from: location, to: landmark)
+        // Calculate the vertical tilt
+        //let tilt = Matrix.angleOffHorizon(from: location, to: landmark)
+        // Apply the transformations
+//        let tiltedTransformation = Matrix.rotateVertically(matrix: distanceTransform, around: tilt)
+//        let completedTransformation = Matrix.rotateHorizontally(matrix: tiltedTransformation, around: -rotation)
+        return transform
+    }
+    
+    func placeNodes() {
+        guard let center = worldCenter else {
+            return
+        }
+        
+        let billboardConstraint = SCNBillboardConstraint()
+        billboardConstraint.freeAxes = .Y
+        
+        for (id , pin) in pins {
+            let node = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+            node.transform = makeTransform(from: center, to: pin)
+            node.constraints = [billboardConstraint]
+            node.geometry?.firstMaterial?.diffuse.contents = UIImage(named: "gandalfcage.png")
+            
+            sceneView.scene.rootNode.addChildNode(node)
+            
+            print("UUID: " +  id.description + "; Coordinate: " + pin.description)
+//            let anchorPoint = makeARAnchor(from: center, to: landmark.location)
+//            arSKView.session.add(anchor: anchorPoint)
+//            pins[anchorPoint.identifier] = landmark
+//            anchors.append(anchorPoint)
+            
+        }
+    }
+    
+    func removeAllNodes() {
+        let root = sceneView.scene.rootNode
+        root.childNodes.forEach({
+            $0.removeFromParentNode()
+        })
+        
+        pins = [:]
+//        anchors.forEach({
+//            arSKView.node(for: $0)?.removeFromParent()
+//            arSKView.session.remove(anchor: $0)
+//        })
+//        anchors = []
+//        pins = [:]
+    }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
-    /**
-     Precise bearing between two points.
-     */
     static func bearingBetween(startLocation: CLLocation, endLocation: CLLocation) -> Float {
         var azimuth: Float = 0
         let lat1 = GLKMathDegreesToRadians(
@@ -95,13 +130,5 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         if(azimuth < 0) { azimuth += 360 }
         return azimuth
     }
-
     
-    func setTransform(location : CLLocation) -> SCNMatrix4{
-        let translation = SCNMatrix4MakeTranslation(0, 0, Float(location.distance(from: manager!.location!)))
-        let teta = ARViewController.bearingBetween(startLocation: manager!.location!, endLocation: location)
-        let rotation = SCNMatrix4MakeRotation(teta, 0, 1, 0)
-        
-        return SCNMatrix4Mult(translation, SCNMatrix4Mult(rotation, root!.transform))
-    }
 }

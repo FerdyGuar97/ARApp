@@ -9,11 +9,13 @@
 import UIKit
 import MapKit
 import Foundation
+import ARKit
 
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var lbldebug: UILabel!
+    var arViewController : ARViewController?
     
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
     var locationManager = CLLocationManager()
@@ -191,9 +193,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        updateDistances()
-    }
+    
     
     @IBAction func threeTapAction(_ sender: UITapGestureRecognizer) {
         lbldebug.isHidden = !lbldebug.isHidden
@@ -205,6 +205,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        
+        locationManager.distanceFilter = CLLocationDistance(integerLiteral: 10)
         
         lbldebug.numberOfLines = 10
         lbldebug.isHidden = true;
@@ -220,9 +222,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         switch segue.identifier {
         case "toARview":
             let dstView = segue.destination as! ARViewController
-            dstView.manager = locationManager
+            dstView.locationManager = locationManager
+            arViewController = dstView
         default:
             print(#function)
         }
     }
+    
+//    Metodo del CLLocationManagerDelegate
+
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//
+//        guard let arView = arViewController else {return}
+//
+//        if let location = locations.last {
+//            if arView.worldCenter == nil || abs(arView.worldCenter!.distance(from: location)) > arView.worldRecenteringThreshold {
+//                arView.removeAllNodes()
+//                arView.updateWorldCenter(location)
+//                arView.placeNodes()
+//            }
+//        }
+//    }
 }
