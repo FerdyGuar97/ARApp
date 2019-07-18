@@ -216,10 +216,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        moreButton.layer.cornerRadius=5
-        plusButton.layer.cornerRadius=5
-        positionButton.layer.cornerRadius=5
-        
         customButtons()
         
         mapView.delegate = self
