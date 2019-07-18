@@ -14,6 +14,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var positionButton: UIButton!
@@ -119,7 +120,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     */
     
     // Elimina le annotazioni selezionate
-    @IBAction func deleteAnnotation(_ sender: UIButton) {
+    func deleteAnnotation(_ sender: UIButton) {
         // Controllo se l'array delle annotazioni selezionate è vuoto
         if mapView.selectedAnnotations.isEmpty { return }
         else {
@@ -192,6 +193,30 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
+        
+        let borderColor = UIColor.lightGray.cgColor
+        let backgroundColor = UIColor.white.cgColor
+        let borderWidth : CGFloat = 0.5
+        let cornerRadius : CGFloat = 5.0
+        let imagePadding = UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3)
+        
+        moreButton.layer.borderColor = borderColor
+        moreButton.layer.backgroundColor = backgroundColor
+        moreButton.layer.borderWidth = borderWidth
+        moreButton.layer.cornerRadius = cornerRadius
+        moreButton.imageEdgeInsets = imagePadding
+        
+        plusButton.layer.borderColor = borderColor
+        plusButton.layer.backgroundColor = backgroundColor
+        plusButton.layer.borderWidth = borderWidth
+        plusButton.layer.cornerRadius = cornerRadius
+        plusButton.imageEdgeInsets = imagePadding
+        
+        positionButton.layer.borderColor = borderColor
+        positionButton.layer.backgroundColor = backgroundColor
+        positionButton.layer.borderWidth = borderWidth
+        positionButton.layer.cornerRadius = cornerRadius
+        positionButton.imageEdgeInsets = imagePadding
         
         mapView.delegate = self
         locationManager.delegate = self
