@@ -13,7 +13,6 @@ import Foundation
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var btnAR: UIButton!
     
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
