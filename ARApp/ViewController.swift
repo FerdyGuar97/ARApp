@@ -189,7 +189,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationController?.navigationBar.isTranslucent = true
         
         let borderColor = UIColor(red: 229.0/255, green: 229.0/255, blue: 234.0/255, alpha: 0.9).cgColor
-        let backgroundColor = UIColor(white: 1, alpha: 0.9).cgColor
+        let backgroundColor = UIColor(white: 1, alpha: 0.98).cgColor
         let borderWidth : CGFloat = 0.5
         let cornerRadius : CGFloat = 5.0
         let padAm : CGFloat = 7.0
