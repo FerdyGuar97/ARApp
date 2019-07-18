@@ -30,6 +30,12 @@ class CoreDataController {
         CoreDataAnn.subtitle = sub
         CoreDataAnn.latitude = loc.latitude
         CoreDataAnn.longitude = loc.longitude
+        
+        do {
+            try CoreDataAnn.managedObjectContext?.save()
+        } catch let error {
+            print("\(error)")
+        }
     }
     
     func getAnnotation(byUUID uuid: UUID) -> Annotation? {
@@ -48,6 +54,13 @@ class CoreDataController {
             print("Errore \(err)")
         }
         return nil;
+    }
+    
+    func getDocument(byUUID uuid: UUID) -> Document? {
+        if let ann = getAnnotation(byUUID: uuid) {
+            return ann.document
+        }
+        return nil
     }
     
     // Restituisce tutte le Annotation presenti nel Core Data
@@ -149,6 +162,11 @@ class CoreDataController {
             document.annotation = annotation
             document.image = img?.pngData() as NSData?
             document.descrizione = desc
+            do {
+                try context.save()
+            } catch let err {
+                print(err)
+            }
         }
     }
     
@@ -157,10 +175,18 @@ class CoreDataController {
             self.context.delete(docToDelete)
             
             do {
-                try self.context.save()
+                try annotation.managedObjectContext?.save()
             } catch let error {
                 print("\(error)")
             }
         }
+    }
+    
+    func getViewImage(byUUID uuid: UUID) -> UIImage {
+        let annotation = getAnnotation(byUUID: uuid)
+        
+        let view = ARInfoView(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height/3, title: annotation!.title!,subTitle: annotation!.subtitle!, description: (annotation?.document?.descrizione ?? "")!, image: annotation?.document?.image as Data?)
+        
+        return view.getUIImage()
     }
 }
