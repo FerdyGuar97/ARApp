@@ -14,14 +14,22 @@ import ARKit
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var lbldebug: UILabel!
+
     var arViewController : ARViewController?
+
+    
+    @IBOutlet weak var buttonsStackView: UIStackView!
+    @IBOutlet weak var moreButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
+    @IBOutlet weak var positionButton: UIButton!
+    @IBOutlet weak var ARbtn: UIButton!
+    
     
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
     var locationManager = CLLocationManager()
     
     // Valore di default per l'ampiezza della regione da visualizzare
-    let regionRadius: Double = 1200
+    let regionRadius: Double = 500
     
     // Richiede all'utente di abilitare i permessi di geolocalizzazione
     func allowGPS() {
@@ -80,16 +88,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     
     @IBAction func longPressureAction(_ sender: UILongPressGestureRecognizer) {
-        let posMapView = sender.location(in: mapView)
-        let coordinate = mapView.convert(posMapView, toCoordinateFrom: mapView)
-        addAnnotation(at: coordinate)
+        if sender.state == UIGestureRecognizer.State.began { // Per non far avviare la segue due volte
+            performSegue(withIdentifier: "addSegue", sender: sender)
+        }
     }
     
-    @IBAction func addBtnAction(_ sender: UIButton) {
-        let coordinate = mapView.userLocation.coordinate
-        addAnnotation(at: coordinate)
-    }
-    
+    /*
     // Crea una nuova annotazione posizionandola sulle coordinate passate come parametro
     func addAnnotation(at coordinate: CLLocationCoordinate2D) {
         let newAnnotation = ARAppStdPointAnnotation()
@@ -118,9 +122,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.present(alert, animated: true)
         
     }
+    */
     
     // Elimina le annotazioni selezionate
-    @IBAction func deleteAnnotation(_ sender: UIButton) {
+    @objc func deleteAnnotation(_ sender: UIButton) {
         // Controllo se l'array delle annotazioni selezionate è vuoto
         if mapView.selectedAnnotations.isEmpty { return }
         else {
@@ -183,33 +188,47 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
 
-    func updateDistances() {
-        lbldebug.text = "";
-        guard let points = CoreDataController.shared.getPointAnnotations() else { return }
-        for i in points {
-            let iLoc = CLLocation(latitude: i.coordinate.latitude, longitude: i.coordinate.longitude)
-            let distance = locationManager.location?.distance(from: iLoc)
-            lbldebug.text = lbldebug.text!  + String(format: "\n"+i.title!+" distance: %lf", distance!)
-        }
-    }
     
-    
-    
-    @IBAction func threeTapAction(_ sender: UITapGestureRecognizer) {
-        lbldebug.isHidden = !lbldebug.isHidden
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func customButtons() {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         
-        locationManager.distanceFilter = CLLocationDistance(integerLiteral: 10)
+        let borderColor = UIColor(red: 229.0/255, green: 229.0/255, blue: 234.0/255, alpha: 0.9).cgColor
+        let backgroundColor = UIColor(white: 1, alpha: 0.97).cgColor
+        let borderWidth : CGFloat = 0.5
+        let cornerRadius : CGFloat = 5.0
+        let padAm : CGFloat = 7.0
+        let imagePadding = UIEdgeInsets(top: padAm, left: padAm, bottom: padAm, right: padAm)
         
-        lbldebug.numberOfLines = 10
-        lbldebug.isHidden = true;
+        moreButton.layer.borderColor = borderColor
+        moreButton.layer.backgroundColor = backgroundColor
+        moreButton.layer.borderWidth = borderWidth
+        moreButton.layer.cornerRadius = cornerRadius
+        moreButton.imageEdgeInsets = imagePadding
+        
+        plusButton.layer.borderColor = borderColor
+        plusButton.layer.backgroundColor = backgroundColor
+        plusButton.layer.borderWidth = borderWidth
+        plusButton.layer.cornerRadius = cornerRadius
+        plusButton.imageEdgeInsets = imagePadding
+        
+        positionButton.layer.borderColor = borderColor
+        positionButton.layer.backgroundColor = backgroundColor
+        positionButton.layer.borderWidth = borderWidth
+        positionButton.layer.cornerRadius = cornerRadius
+        positionButton.imageEdgeInsets = imagePadding
+        
+        ARbtn.alpha = 0.97
+        
+        let compassView = MKCompassButton(mapView:mapView)
+        let const = buttonsStackView.widthAnchor.constraint(equalToConstant: compassView.frame.width * 1.3)
+        const.isActive = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        customButtons()
         mapView.delegate = self
         locationManager.delegate = self
         allowGPS()
@@ -218,12 +237,32 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier {
         case "toARview":
             let dstView = segue.destination as! ARViewController
             dstView.locationManager = locationManager
             arViewController = dstView
+        case "addSegue":
+            let nextView = segue.destination as! PhotoViewController
+            if sender is UIButton {
+                nextView.location = locationManager.location?.coordinate
+            } else if sender is UILongPressGestureRecognizer {
+                let press = sender as! UILongPressGestureRecognizer
+                let posMapView = press.location(in: mapView)
+                let coordinate = mapView.convert(posMapView, toCoordinateFrom: mapView)
+                nextView.location = coordinate
+            }
+        default:
+            print(#function)
+        }
+    }
+    
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        switch segue.identifier {
+        case "addSegueUnwind":
+            let src = segue.source as! PhotoViewController
+            let ann = CoreDataController.shared.getPointAnnotation(withUUID: src.uuid!)
+            mapView.addAnnotation(ann!)
         default:
             print(#function)
         }

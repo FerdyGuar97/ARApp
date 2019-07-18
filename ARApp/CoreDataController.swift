@@ -21,15 +21,21 @@ class CoreDataController {
         self.context = application.persistentContainer.viewContext
     }
     
-    func saveAnnotation(_ annotation: ARAppStdPointAnnotation) {
+    func saveAnnotation(withUUID uuid: UUID, withTitle title: String, withSubTitle sub: String, withLocation loc: CLLocationCoordinate2D) {
         let entity = NSEntityDescription.entity(forEntityName: "Annotation", in: self.context)
         let CoreDataAnn = Annotation(entity: entity!, insertInto: context)
         
-        CoreDataAnn.uuid = annotation.uuid
-        CoreDataAnn.title = annotation.title!
-        CoreDataAnn.subtitle = annotation.subtitle!
-        CoreDataAnn.latitude = annotation.coordinate.latitude
-        CoreDataAnn.longitude = annotation.coordinate.longitude
+        CoreDataAnn.uuid = uuid
+        CoreDataAnn.title = title
+        CoreDataAnn.subtitle = sub
+        CoreDataAnn.latitude = loc.latitude
+        CoreDataAnn.longitude = loc.longitude
+        
+        do {
+            try CoreDataAnn.managedObjectContext?.save()
+        } catch let error {
+            print("\(error)")
+        }
     }
     
     func getAnnotation(byUUID uuid: UUID) -> Annotation? {
@@ -48,6 +54,13 @@ class CoreDataController {
             print("Errore \(err)")
         }
         return nil;
+    }
+    
+    func getDocument(byUUID uuid: UUID) -> Document? {
+        if let ann = getAnnotation(byUUID: uuid) {
+            return ann.document
+        }
+        return nil
     }
     
     // Restituisce tutte le Annotation presenti nel Core Data
@@ -100,6 +113,19 @@ class CoreDataController {
         }
     }
     
+    func getPointAnnotation(withUUID uuid: UUID) -> ARAppStdPointAnnotation? {
+        if let a = getAnnotation(byUUID: uuid) {
+            let newMKAnn = ARAppStdPointAnnotation()
+            newMKAnn.uuid = a.uuid
+            newMKAnn.title = a.title
+            newMKAnn.subtitle = a.subtitle
+            newMKAnn.coordinate.longitude = a.longitude
+            newMKAnn.coordinate.latitude = a.latitude
+            return newMKAnn
+        }
+        return nil;
+    }
+    
     // Restituisce la locazione di un punto in base all'UUID (Utile per calcolare distanze)
     func getLocation(byUUID uuid: UUID) -> CLLocation? {
         if let annotation = getAnnotation(byUUID: uuid) {
@@ -124,7 +150,7 @@ class CoreDataController {
         }
     }
     
-    func saveDocument(withUUID uuid: UUID, withImage img: UIImage, withDescription desc: String) {
+    func saveDocument(withUUID uuid: UUID, withImage img: UIImage?, withDescription desc: String) {
         if let annotation = getAnnotation(byUUID: uuid) {
             let entity = NSEntityDescription.entity(forEntityName: "Document", in: self.context)
             let document = Document(entity: entity!, insertInto: context)
@@ -134,8 +160,13 @@ class CoreDataController {
             annotation.document = document
             
             document.annotation = annotation
-            document.image = img.pngData()! as NSData
+            document.image = img?.pngData() as NSData?
             document.descrizione = desc
+            do {
+                try context.save()
+            } catch let err {
+                print(err)
+            }
         }
     }
     
@@ -144,10 +175,18 @@ class CoreDataController {
             self.context.delete(docToDelete)
             
             do {
-                try self.context.save()
+                try annotation.managedObjectContext?.save()
             } catch let error {
                 print("\(error)")
             }
         }
+    }
+    
+    func getViewImage(byUUID uuid: UUID) -> UIImage {
+        let annotation = getAnnotation(byUUID: uuid)
+        
+        let view = ARInfoView(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height/3, title: annotation!.title!,subTitle: annotation!.subtitle!, description: (annotation?.document?.descrizione ?? "")!, image: annotation?.document?.image as Data?)
+        
+        return view.getUIImage()
     }
 }

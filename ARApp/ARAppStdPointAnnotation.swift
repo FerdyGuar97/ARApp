@@ -10,6 +10,6 @@ import UIKit
 import MapKit
 
 class ARAppStdPointAnnotation: MKPointAnnotation {
-    var uuid = UUID()
+    var uuid : UUID!
     // Implementare immagini o documenti
 }
