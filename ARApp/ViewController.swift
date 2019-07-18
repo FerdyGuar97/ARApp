@@ -83,6 +83,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    /*
     // Crea una nuova annotazione posizionandola sulle coordinate passate come parametro
     func addAnnotation(at coordinate: CLLocationCoordinate2D) {
         let newAnnotation = ARAppStdPointAnnotation()
@@ -111,6 +112,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.present(alert, animated: true)
         
     }
+    */
     
     // Elimina le annotazioni selezionate
     @IBAction func deleteAnnotation(_ sender: UIButton) {
@@ -191,7 +193,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier {
         case "toARview":
             let dstView = segue.destination as! ARViewController
