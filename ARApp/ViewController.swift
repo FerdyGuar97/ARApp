@@ -18,6 +18,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
     @IBOutlet weak var positionButton: UIButton!
+    @IBOutlet weak var ARbtn: UIButton!
     
     
     // Oggetto che consente di ottenere la posizione GPS del dispositivo
@@ -189,7 +190,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.navigationController?.navigationBar.isTranslucent = true
         
         let borderColor = UIColor(red: 229.0/255, green: 229.0/255, blue: 234.0/255, alpha: 0.9).cgColor
-        let backgroundColor = UIColor(white: 1, alpha: 0.98).cgColor
+        let backgroundColor = UIColor(white: 1, alpha: 0.97).cgColor
         let borderWidth : CGFloat = 0.5
         let cornerRadius : CGFloat = 5.0
         let padAm : CGFloat = 7.0
@@ -212,14 +213,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         positionButton.layer.borderWidth = borderWidth
         positionButton.layer.cornerRadius = cornerRadius
         positionButton.imageEdgeInsets = imagePadding
+        
+        ARbtn.alpha = 0.97
+        
+        let compassView = MKCompassButton(mapView:mapView)
+        let const = buttonsStackView.widthAnchor.constraint(equalToConstant: compassView.frame.width * 1.3)
+        const.isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         customButtons()
         
+        
         mapView.delegate = self
         locationManager.delegate = self
+        
+        
+        
         allowGPS()
         showCurrentPosition()
         loadPointAnnotation()

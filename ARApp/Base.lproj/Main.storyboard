@@ -25,11 +25,11 @@
                                     <outletCollection property="gestureRecognizers" destination="R8m-Wa-m13" appends="YES" id="Lya-5A-nIj"/>
                                 </connections>
                             </mapView>
-                            <stackView contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Do2-iT-qKN">
-                                <rect key="frame" x="368" y="138" width="43" height="134.5"/>
+                            <stackView contentMode="scaleAspectFit" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Do2-iT-qKN">
+                                <rect key="frame" x="393" y="138" width="18" height="60"/>
                                 <subviews>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-ue-mwX">
-                                        <rect key="frame" x="0.0" y="0.0" width="43" height="43"/>
+                                    <button contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pji-ue-mwX">
+                                        <rect key="frame" x="0.0" y="0.0" width="18" height="18"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.034703119269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Pji-ue-mwX" secondAttribute="height" multiplier="1:1" id="wfB-oS-rvO"/>
@@ -38,8 +38,8 @@
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-zI-FJ9">
-                                        <rect key="frame" x="0.0" y="46" width="43" height="42.5"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jvi-zI-FJ9">
+                                        <rect key="frame" x="0.0" y="21" width="18" height="18"/>
                                         <color key="backgroundColor" white="1" alpha="0.78939260560000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="jvi-zI-FJ9" secondAttribute="height" multiplier="1:1" id="9eh-h5-8D7"/>
@@ -49,8 +49,8 @@
                                             <segue destination="jFa-x4-bja" kind="show" identifier="addSegue" id="t0u-zb-Y34"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyn-vK-g8J">
-                                        <rect key="frame" x="0.0" y="91.5" width="43" height="43"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hyn-vK-g8J">
+                                        <rect key="frame" x="0.0" y="42" width="18" height="18"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="0.034703119269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Hyn-vK-g8J" secondAttribute="height" multiplier="1:1" id="bRV-O3-xrq"/>
@@ -64,9 +64,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Aa-rP-ArG">
-                                <rect key="frame" x="172" y="752" width="70" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Aa-rP-ArG">
+                                <rect key="frame" x="199" y="804" width="16" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" image="ARSymC"/>
                                 <connections>
@@ -77,9 +76,10 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Do2-iT-qKN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="4rM-K1-gbr"/>
+                            <constraint firstItem="8Aa-rP-ArG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="50U-25-Rw6"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5U4-Da-s6X"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8Aa-rP-ArG" secondAttribute="bottom" constant="30" id="PKz-1E-6KU"/>
                             <constraint firstAttribute="bottom" secondItem="qIs-9n-Bgg" secondAttribute="bottom" id="Wl1-lS-MUK"/>
-                            <constraint firstItem="Do2-iT-qKN" firstAttribute="height" secondItem="qIs-9n-Bgg" secondAttribute="height" multiplier="0.15" id="Yft-j7-Wej"/>
                             <constraint firstAttribute="trailing" secondItem="qIs-9n-Bgg" secondAttribute="trailing" id="ZNy-Bu-XcP"/>
                             <constraint firstItem="qIs-9n-Bgg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="gZ7-6F-ViQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Do2-iT-qKN" secondAttribute="trailing" constant="3" id="tFJ-7o-nZ0"/>
@@ -88,6 +88,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="tmh-j7-csk"/>
                     <connections>
+                        <outlet property="ARbtn" destination="8Aa-rP-ArG" id="N7o-ap-OPB"/>
                         <outlet property="buttonsStackView" destination="Do2-iT-qKN" id="Pfe-cd-ae9"/>
                         <outlet property="mapView" destination="qIs-9n-Bgg" id="l2v-Nv-j5M"/>
                         <outlet property="moreButton" destination="Pji-ue-mwX" id="TBT-DS-3wb"/>
