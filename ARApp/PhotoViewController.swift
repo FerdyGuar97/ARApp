@@ -12,6 +12,9 @@ import CoreLocation
 class PhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var titleField: UITextField!
+    @IBOutlet weak var descField: UITextField!
+    @IBOutlet weak var subtitleField: UITextField!
     
     public var location:CLLocationCoordinate2D!
     public var uuid: UUID?
@@ -39,7 +42,10 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
     @IBAction func commit(_ sender: UIButton) {
         uuid = UUID()
         
-        CoreDataController.shared.saveDocument(withUUID: uuid, withImage: imageView.image, withDescription: )
+        CoreDataController.shared.saveAnnotation(withUUID: uuid!, withTitle: titleField.text!, withSubTitle: subtitleField.text!, withLocation: location)
+        
+        CoreDataController.shared.saveDocument(withUUID: uuid!, withImage: imageView.image, withDescription: descField.text!)
+        
         self.performSegue(withIdentifier: "addSegueUnwind", sender: sender)
     }
     
