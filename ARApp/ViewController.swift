@@ -120,7 +120,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     */
     
     // Elimina le annotazioni selezionate
-    func deleteAnnotation(_ sender: UIButton) {
+    @objc func deleteAnnotation(_ sender: UIButton) {
         // Controllo se l'array delle annotazioni selezionate è vuoto
         if mapView.selectedAnnotations.isEmpty { return }
         else {
