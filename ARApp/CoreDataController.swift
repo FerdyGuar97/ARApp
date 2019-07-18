@@ -21,15 +21,15 @@ class CoreDataController {
         self.context = application.persistentContainer.viewContext
     }
     
-    func saveAnnotation(_ annotation: ARAppStdPointAnnotation) {
+    func saveAnnotation(withUUID uuid: UUID, withTitle title: String, withSubTitle sub: String, withLocation loc: CLLocationCoordinate2D) {
         let entity = NSEntityDescription.entity(forEntityName: "Annotation", in: self.context)
         let CoreDataAnn = Annotation(entity: entity!, insertInto: context)
         
-        CoreDataAnn.uuid = annotation.uuid
-        CoreDataAnn.title = annotation.title!
-        CoreDataAnn.subtitle = annotation.subtitle!
-        CoreDataAnn.latitude = annotation.coordinate.latitude
-        CoreDataAnn.longitude = annotation.coordinate.longitude
+        CoreDataAnn.uuid = uuid
+        CoreDataAnn.title = title
+        CoreDataAnn.subtitle = sub
+        CoreDataAnn.latitude = loc.latitude
+        CoreDataAnn.longitude = loc.longitude
     }
     
     func getAnnotation(byUUID uuid: UUID) -> Annotation? {
@@ -100,6 +100,19 @@ class CoreDataController {
         }
     }
     
+    func getPointAnnotation(withUUID uuid: UUID) -> ARAppStdPointAnnotation? {
+        if let a = getAnnotation(byUUID: uuid) {
+            let newMKAnn = ARAppStdPointAnnotation()
+            newMKAnn.uuid = a.uuid
+            newMKAnn.title = a.title
+            newMKAnn.subtitle = a.subtitle
+            newMKAnn.coordinate.longitude = a.longitude
+            newMKAnn.coordinate.latitude = a.latitude
+            return newMKAnn
+        }
+        return nil;
+    }
+    
     // Restituisce la locazione di un punto in base all'UUID (Utile per calcolare distanze)
     func getLocation(byUUID uuid: UUID) -> CLLocation? {
         if let annotation = getAnnotation(byUUID: uuid) {
@@ -124,7 +137,7 @@ class CoreDataController {
         }
     }
     
-    func saveDocument(withUUID uuid: UUID, withImage img: UIImage, withDescription desc: String) {
+    func saveDocument(withUUID uuid: UUID, withImage img: UIImage?, withDescription desc: String) {
         if let annotation = getAnnotation(byUUID: uuid) {
             let entity = NSEntityDescription.entity(forEntityName: "Document", in: self.context)
             let document = Document(entity: entity!, insertInto: context)
@@ -134,7 +147,7 @@ class CoreDataController {
             annotation.document = document
             
             document.annotation = annotation
-            document.image = img.pngData()! as NSData
+            document.image = (img ?? UIImage(named: "stdDocumentImage"))!.pngData()! as NSData
             document.descrizione = desc
         }
     }
