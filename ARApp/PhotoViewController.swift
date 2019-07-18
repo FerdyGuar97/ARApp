@@ -12,7 +12,9 @@ import CoreLocation
 class PhotoViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    
     public var location:CLLocationCoordinate2D!
+    public var uuid: UUID?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,10 @@ class PhotoViewController: UIViewController, UINavigationControllerDelegate, UII
     }
     
     @IBAction func commit(_ sender: UIButton) {
+        uuid = UUID()
+        
+        CoreDataController.shared.saveDocument(withUUID: uuid, withImage: imageView.image, withDescription: )
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
