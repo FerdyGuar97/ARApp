@@ -74,8 +74,6 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
             
             sceneView.scene.rootNode.addChildNode(node)
             
-            print("UUID: " +  id.description + "; Coordinate: " + pin.description)
-            
         }
     }
     
