@@ -224,13 +224,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         customButtons()
-        
-        
         mapView.delegate = self
         locationManager.delegate = self
-        
-        
-        
         allowGPS()
         showCurrentPosition()
         loadPointAnnotation()
