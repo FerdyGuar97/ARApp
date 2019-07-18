@@ -213,6 +213,13 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
-        print("torno indietro al ViewController Verde")
+        switch segue.identifier {
+        case "addSegueUnwind":
+            let src = segue.source as! PhotoViewController
+            let ann = CoreDataController.shared.getPointAnnotation(withUUID: src.uuid!)
+            mapView.addAnnotation(ann!)
+        default:
+            print(#function)
+        }
     }
 }
