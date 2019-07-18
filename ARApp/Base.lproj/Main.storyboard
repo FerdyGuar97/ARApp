@@ -220,7 +220,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ARSymC" width="60" height="60"/>
+        <image name="ARSymC" width="53.5" height="53.5"/>
         <image name="more" width="60" height="60"/>
         <image name="navigation" width="60" height="60"/>
         <image name="plus" width="60" height="60"/>
