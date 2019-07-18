@@ -69,7 +69,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         billboardConstraint.freeAxes = .Y
         
         for (id , pin) in pins {
-            let node = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+            let node = SCNNode(geometry: SCNPlane(width: 2, height: 1))
             node.transform = makeTransform(from: center, to: pin)
             node.constraints = [billboardConstraint]
             node.geometry?.firstMaterial?.diffuse.contents = CoreDataController.shared.getViewImage(byUUID: id)
