@@ -13,6 +13,7 @@ import Foundation
 class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var btnAR: UIButton!
     
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
@@ -87,6 +88,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
+    /*
     // Crea una nuova annotazione posizionandola sulle coordinate passate come parametro
     func addAnnotation(at coordinate: CLLocationCoordinate2D) {
         let newAnnotation = ARAppStdPointAnnotation()
@@ -115,6 +117,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         self.present(alert, animated: true)
         
     }
+    */
     
     // Elimina le annotazioni selezionate
     @IBAction func deleteAnnotation(_ sender: UIButton) {
@@ -199,7 +202,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         switch segue.identifier {
         case "toARview":
             let dstView = segue.destination as! ARViewController
@@ -214,6 +216,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 let coordinate = mapView.convert(posMapView, toCoordinateFrom: mapView)
                 nextView.location = coordinate
             }
+        default:
+            print(#function)
+        }
+    }
+    
+    @IBAction func unwindToViewController(segue: UIStoryboardSegue) {
+        switch segue.identifier {
+        case "addSegueUnwind":
+            let src = segue.source as! PhotoViewController
+            let ann = CoreDataController.shared.getPointAnnotation(withUUID: src.uuid!)
+            mapView.addAnnotation(ann!)
         default:
             print(#function)
         }
