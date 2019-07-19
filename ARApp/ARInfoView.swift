@@ -68,7 +68,7 @@ class ARInfoView : UIView {
         let imgY : CGFloat = titleHeight + subHeight
         imgDocument.frame = CGRect(x: imgX, y: imgY, width: imgWidth, height: imgHeight)
         imgDocument.image = image
-        imgDocument.backgroundColor = UIColor(white: 1, alpha: 0)
+        imgDocument.backgroundColor = .clear
         imgDocument.isHidden = false
         imgDocument.layer.cornerRadius = 5
         imgDocument.contentMode = .scaleAspectFit
