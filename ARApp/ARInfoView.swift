@@ -34,10 +34,11 @@ class ARInfoView : UIView {
         let stdWidth = self.frame.width
         let fontColor = UIColor(red: 0, green: 122.0/255, blue: 1, alpha: 1)
         
-        self.layer.cornerRadius = 5.0
+        self.layer.cornerRadius = stdHeight * 0.01
         self.layer.borderColor = UIColor(red: 229.0/255, green: 229.0/255, blue: 234.0/255, alpha: 0.9).cgColor
         self.layer.borderWidth = 1.0
         
+        lblTitle.font = .systemFont(ofSize: stdHeight * 0.073)
         let titleHeight : CGFloat = lblTitle.font.pointSize + lblTitle.font.pointSize * 0.2
         let titleWidth : CGFloat = stdWidth
         let titleX : CGFloat = 0
@@ -49,11 +50,11 @@ class ARInfoView : UIView {
         lblTitle.backgroundColor = UIColor(white: 1, alpha: 0)
         self.addSubview(lblTitle)
         
+        lblSubTitle.font = .systemFont(ofSize: stdHeight * 0.03)
         let subHeight : CGFloat = lblSubTitle.font.pointSize + lblSubTitle.font.pointSize * 0.1
         let subWidth : CGFloat = stdWidth
         let subX : CGFloat = 0
         let subY : CGFloat = titleHeight
-        lblSubTitle.font = .systemFont(ofSize: lblSubTitle.font.pointSize - 8)
         lblSubTitle.textColor = fontColor
         lblSubTitle.text = subTitle
         lblSubTitle.textAlignment = .center
@@ -61,13 +62,13 @@ class ARInfoView : UIView {
         lblSubTitle.backgroundColor = UIColor(white: 1, alpha: 0)
         self.addSubview(lblSubTitle)
         
-        let imgHeight : CGFloat = stdHeight - titleHeight - subHeight - stdWidth * 0.01
+        let imgHeight : CGFloat = image != nil ? stdHeight - titleHeight - subHeight - stdWidth * 0.01 : 0;
         let imgWidth : CGFloat = imgHeight
         let imgX : CGFloat = stdWidth * 0.01
         let imgY : CGFloat = titleHeight + subHeight
         imgDocument.frame = CGRect(x: imgX, y: imgY, width: imgWidth, height: imgHeight)
         imgDocument.image = image
-        imgDocument.backgroundColor = .green
+        imgDocument.backgroundColor = UIColor(white: 1, alpha: 0)
         imgDocument.isHidden = false
         imgDocument.layer.cornerRadius = 5
         imgDocument.contentMode = .scaleAspectFit
@@ -83,7 +84,7 @@ class ARInfoView : UIView {
         lblDescription.isHidden = false
         lblDescription.textAlignment = .left
         lblDescription.numberOfLines = 0
-        lblDescription.font = .systemFont(ofSize: lblSubTitle.font.pointSize + 5)
+        lblDescription.font = .systemFont(ofSize: stdHeight * 0.04)
         lblDescription.sizeToFit()
         self.addSubview(lblDescription)
     }

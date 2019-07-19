@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		317F7D9922E080F000399655 /* gandalfcage.png in Resources */ = {isa = PBXBuildFile; fileRef = 317F7D9822E080F000399655 /* gandalfcage.png */; };
 		318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318100E922DF1127002BCBA2 /* ARViewController.swift */; };
 		A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3422D6181200996DC2 /* AppDelegate.swift */; };
 		A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3622D6181200996DC2 /* ViewController.swift */; };
@@ -45,7 +44,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		317F7D9822E080F000399655 /* gandalfcage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gandalfcage.png; sourceTree = "<group>"; };
 		318100E922DF1127002BCBA2 /* ARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		A73DEB3122D6181200996DC2 /* ARApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB3422D6181200996DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 		A73DEB3322D6181200996DC2 /* ARApp */ = {
 			isa = PBXGroup;
 			children = (
-				317F7D9822E080F000399655 /* gandalfcage.png */,
 				E8887F7B22DF530A009F7787 /* Document+CoreDataClass.swift */,
 				E8887F7C22DF530A009F7787 /* Document+CoreDataProperties.swift */,
 				318100E922DF1127002BCBA2 /* ARViewController.swift */,
@@ -265,7 +262,6 @@
 				A73DEB4222D6181300996DC2 /* LaunchScreen.storyboard in Resources */,
 				A73DEB3F22D6181300996DC2 /* Assets.xcassets in Resources */,
 				A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */,
-				317F7D9922E080F000399655 /* gandalfcage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

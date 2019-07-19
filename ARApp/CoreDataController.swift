@@ -185,7 +185,7 @@ class CoreDataController {
     func getViewImage(byUUID uuid: UUID) -> UIImage {
         let annotation = getAnnotation(byUUID: uuid)
         
-        let view = ARInfoView(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height/3, title: annotation!.title!,subTitle: annotation!.subtitle!, description: (annotation?.document?.descrizione ?? "")!, image: annotation?.document?.image as Data?)
+        let view = ARInfoView(width: UIScreen.main.bounds.height, height: UIScreen.main.bounds.height/4 * 3, title: annotation!.title!,subTitle: annotation!.subtitle!, description: (annotation?.document?.descrizione ?? "")!, image: annotation?.document?.image as Data?)
         
         return view.getUIImage()
     }

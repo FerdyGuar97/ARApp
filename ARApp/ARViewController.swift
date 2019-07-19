@@ -71,10 +71,12 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         
         for (id , pin) in pins {
-            let node = SCNNode(geometry: SCNPlane(width: 2, height: 1))
+            let image = CoreDataController.shared.getViewImage(byUUID: id)
+            let norm = max(image.size.width,image.size.height)
+            let node = SCNNode(geometry: SCNPlane(width: image.size.width/norm, height: image.size.height/norm))
             node.transform = makeTransform(from: center, to: pin)
             node.constraints = [billboardConstraint]
-            node.geometry?.firstMaterial?.diffuse.contents = CoreDataController.shared.getViewImage(byUUID: id)
+            node.geometry?.firstMaterial?.diffuse.contents = image
             
             sceneView.scene.rootNode.addChildNode(node)
             
