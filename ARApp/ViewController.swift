@@ -205,6 +205,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         moreButton.layer.borderWidth = borderWidth
         moreButton.layer.cornerRadius = cornerRadius
         moreButton.imageEdgeInsets = imagePadding
+        // moreButton disattivato nella demo
+        moreButton.isHidden = true
         
         plusButton.layer.borderColor = borderColor
         plusButton.layer.backgroundColor = backgroundColor
