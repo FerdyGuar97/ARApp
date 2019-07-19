@@ -67,6 +67,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         let billboardConstraint = SCNBillboardConstraint()
         billboardConstraint.freeAxes = .Y
+
+        
         
         for (id , pin) in pins {
             let node = SCNNode(geometry: SCNPlane(width: 2, height: 1))
