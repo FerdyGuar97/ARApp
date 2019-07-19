@@ -230,9 +230,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="po4-OD-mrU">
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="po4-OD-mrU">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="ohf-x7-gz3" appends="YES" id="8jv-89-iUw"/>
@@ -240,6 +239,12 @@
                             </arscnView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="po4-OD-mrU" firstAttribute="leading" secondItem="PS8-7s-JIc" secondAttribute="leading" id="TFO-Ne-9c3"/>
+                            <constraint firstAttribute="bottom" secondItem="po4-OD-mrU" secondAttribute="bottom" id="XE0-dd-Zz2"/>
+                            <constraint firstItem="po4-OD-mrU" firstAttribute="top" secondItem="vo0-e4-jNh" secondAttribute="top" id="Zre-kn-Mts"/>
+                            <constraint firstItem="po4-OD-mrU" firstAttribute="trailing" secondItem="PS8-7s-JIc" secondAttribute="trailing" id="yMx-jm-i7e"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PS8-7s-JIc"/>
                     </view>
                     <connections>
