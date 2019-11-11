@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318100E922DF1127002BCBA2 /* ARViewController.swift */; };
+		31E482402378DE21003FD86C /* MyImageClassifier 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 31E4823F2378DE21003FD86C /* MyImageClassifier 1.mlmodel */; };
+		31E482422378DF40003FD86C /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E482412378DF40003FD86C /* StatusViewController.swift */; };
+		31E482442378DF6C003FD86C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E482432378DF6C003FD86C /* Utilities.swift */; };
+		31E482462378DFBE003FD86C /* TemplateLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E482452378DFBD003FD86C /* TemplateLabelNode.swift */; };
+		31E482482378F82D003FD86C /* LabelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31E482472378F82D003FD86C /* LabelScene.sks */; };
 		A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3422D6181200996DC2 /* AppDelegate.swift */; };
 		A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3622D6181200996DC2 /* ViewController.swift */; };
 		A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73DEB3822D6181200996DC2 /* Main.storyboard */; };
@@ -45,6 +50,11 @@
 
 /* Begin PBXFileReference section */
 		318100E922DF1127002BCBA2 /* ARViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
+		31E4823F2378DE21003FD86C /* MyImageClassifier 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = "MyImageClassifier 1.mlmodel"; sourceTree = "<group>"; };
+		31E482412378DF40003FD86C /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		31E482432378DF6C003FD86C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		31E482452378DFBD003FD86C /* TemplateLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateLabelNode.swift; sourceTree = "<group>"; };
+		31E482472378F82D003FD86C /* LabelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LabelScene.sks; sourceTree = "<group>"; };
 		A73DEB3122D6181200996DC2 /* ARApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB3422D6181200996DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A73DEB3622D6181200996DC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +104,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31E4823E2378DD9D003FD86C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31E4823F2378DE21003FD86C /* MyImageClassifier 1.mlmodel */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A73DEB2822D6181200996DC2 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +135,7 @@
 		A73DEB3322D6181200996DC2 /* ARApp */ = {
 			isa = PBXGroup;
 			children = (
+				31E4823E2378DD9D003FD86C /* Resources */,
 				E8887F7B22DF530A009F7787 /* Document+CoreDataClass.swift */,
 				E8887F7C22DF530A009F7787 /* Document+CoreDataProperties.swift */,
 				318100E922DF1127002BCBA2 /* ARViewController.swift */,
@@ -129,10 +148,14 @@
 				A73DEB3622D6181200996DC2 /* ViewController.swift */,
 				A73DEB3822D6181200996DC2 /* Main.storyboard */,
 				A73DEB3E22D6181300996DC2 /* Assets.xcassets */,
+				31E482472378F82D003FD86C /* LabelScene.sks */,
 				A73DEB4022D6181300996DC2 /* LaunchScreen.storyboard */,
 				A73DEB4322D6181300996DC2 /* Info.plist */,
 				A73DEB3B22D6181200996DC2 /* ARApp.xcdatamodeld */,
 				A795311E22DF5A1000E280EA /* PhotoViewController.swift */,
+				31E482412378DF40003FD86C /* StatusViewController.swift */,
+				31E482452378DFBD003FD86C /* TemplateLabelNode.swift */,
+				31E482432378DF6C003FD86C /* Utilities.swift */,
 			);
 			path = ARApp;
 			sourceTree = "<group>";
@@ -262,6 +285,7 @@
 				A73DEB4222D6181300996DC2 /* LaunchScreen.storyboard in Resources */,
 				A73DEB3F22D6181300996DC2 /* Assets.xcassets in Resources */,
 				A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */,
+				31E482482378F82D003FD86C /* LabelScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,12 +310,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31E482422378DF40003FD86C /* StatusViewController.swift in Sources */,
 				E85DAE8922DC8351000A6702 /* Annotation+CoreDataClass.swift in Sources */,
 				E8BE996F22DCC08F008DB880 /* ARAppStdPointAnnotation.swift in Sources */,
+				31E482442378DF6C003FD86C /* Utilities.swift in Sources */,
+				31E482462378DFBE003FD86C /* TemplateLabelNode.swift in Sources */,
 				E85DAE8A22DC8351000A6702 /* Annotation+CoreDataProperties.swift in Sources */,
 				318100EA22DF1127002BCBA2 /* ARViewController.swift in Sources */,
 				A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */,
 				E89FF4DC22E0A391001F2C47 /* ARInfoView.swift in Sources */,
+				31E482402378DE21003FD86C /* MyImageClassifier 1.mlmodel in Sources */,
 				E8887F7E22DF530A009F7787 /* Document+CoreDataProperties.swift in Sources */,
 				E85DAE8C22DC8459000A6702 /* CoreDataController.swift in Sources */,
 				A73DEB3D22D6181200996DC2 /* ARApp.xcdatamodeld in Sources */,

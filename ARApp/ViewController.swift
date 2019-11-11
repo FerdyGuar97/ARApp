@@ -242,7 +242,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         switch segue.identifier {
         case "toARview":
             let dstView = segue.destination as! ARViewController
-            dstView.locationManager = locationManager
             arViewController = dstView
         case "addSegue":
             let nextView = segue.destination as! PhotoViewController
@@ -270,29 +269,5 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }
     }
     
-//    Metodo del CLLocationManagerDelegate
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        if let newLocation = locations.last{
-            if(newLocation.timestamp.timeIntervalSinceNow < 5){
-                if(newLocation.horizontalAccuracy > 0 && newLocation.horizontalAccuracy < 8){
-                    ARViewController.mostAccurateLocation = newLocation
-                    print(newLocation.description)
-                }
-            }
-        }
-//
-//        guard let arView = arViewController else {return}
-//        
-//        
-
-//        if let location = locations.last {
-//            if arView.worldCenter == nil || abs(arView.worldCenter!.distance(from: location)) > arView.worldRecenteringThreshold {
-//                arView.removeAllNodes()
-//                arView.updateWorldCenter(location)
-//                arView.placeNodes()
-//            }
-//        }
-    }
 }
