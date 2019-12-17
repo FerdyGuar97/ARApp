@@ -193,6 +193,7 @@ class ARViewController: UIViewController, UIGestureRecognizerDelegate, ARSKViewD
         }
         let label = TemplateLabelNode(text: labelText)
         node.addChild(label)
+        
     }
     
     // MARK: - AR Session Handling

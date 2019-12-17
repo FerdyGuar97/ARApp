@@ -28,9 +28,15 @@ class TemplateLabelNode: SKReferenceNode {
         guard let parent = node?.childNode(withName: "LabelNode") else {
             fatalError("misconfigured SpriteKit template file")
         }
+        
         for case let label as SKLabelNode in parent.children {
             label.name = text
             label.text = text
         }
+        
+        let desc = parent.childNode(withName: "DescriptionBox")
+        let description = desc?.childNode(withName: "Description") as! SKLabelNode
+        
+        description.text = "Questa è la descrizione del monumento"
     }
 }

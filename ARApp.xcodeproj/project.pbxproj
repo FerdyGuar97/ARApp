@@ -13,6 +13,7 @@
 		31E482442378DF6C003FD86C /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E482432378DF6C003FD86C /* Utilities.swift */; };
 		31E482462378DFBE003FD86C /* TemplateLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31E482452378DFBD003FD86C /* TemplateLabelNode.swift */; };
 		31E482482378F82D003FD86C /* LabelScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31E482472378F82D003FD86C /* LabelScene.sks */; };
+		31E4824E23791330003FD86C /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 31E4824D23791330003FD86C /* MyScene.sks */; };
 		A73DEB3522D6181200996DC2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3422D6181200996DC2 /* AppDelegate.swift */; };
 		A73DEB3722D6181200996DC2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73DEB3622D6181200996DC2 /* ViewController.swift */; };
 		A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A73DEB3822D6181200996DC2 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		31E482432378DF6C003FD86C /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		31E482452378DFBD003FD86C /* TemplateLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateLabelNode.swift; sourceTree = "<group>"; };
 		31E482472378F82D003FD86C /* LabelScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LabelScene.sks; sourceTree = "<group>"; };
+		31E4824D23791330003FD86C /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		A73DEB3122D6181200996DC2 /* ARApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A73DEB3422D6181200996DC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A73DEB3622D6181200996DC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,14 +150,15 @@
 				A73DEB3622D6181200996DC2 /* ViewController.swift */,
 				A73DEB3822D6181200996DC2 /* Main.storyboard */,
 				A73DEB3E22D6181300996DC2 /* Assets.xcassets */,
-				31E482472378F82D003FD86C /* LabelScene.sks */,
 				A73DEB4022D6181300996DC2 /* LaunchScreen.storyboard */,
+				31E482472378F82D003FD86C /* LabelScene.sks */,
 				A73DEB4322D6181300996DC2 /* Info.plist */,
 				A73DEB3B22D6181200996DC2 /* ARApp.xcdatamodeld */,
 				A795311E22DF5A1000E280EA /* PhotoViewController.swift */,
 				31E482412378DF40003FD86C /* StatusViewController.swift */,
 				31E482452378DFBD003FD86C /* TemplateLabelNode.swift */,
 				31E482432378DF6C003FD86C /* Utilities.swift */,
+				31E4824D23791330003FD86C /* MyScene.sks */,
 			);
 			path = ARApp;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				A73DEB4222D6181300996DC2 /* LaunchScreen.storyboard in Resources */,
 				A73DEB3F22D6181300996DC2 /* Assets.xcassets in Resources */,
+				31E4824E23791330003FD86C /* MyScene.sks in Resources */,
 				A73DEB3A22D6181200996DC2 /* Main.storyboard in Resources */,
 				31E482482378F82D003FD86C /* LabelScene.sks in Resources */,
 			);
